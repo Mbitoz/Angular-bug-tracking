@@ -11,6 +11,8 @@ import { AppService } from './app.service';
 import { TabViewModule } from 'primeng/tabview';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { HeaderComponent } from './pages/header/header.component';
+import { FooterComponent } from './pages/footer/footer.component';
 
 
 
@@ -18,7 +20,9 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
   declarations: [
     AppComponent,
     HomePageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
