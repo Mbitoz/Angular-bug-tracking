@@ -1,0 +1,14 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "vito",
+      "content": "tenza"
+    },
+    {
+      "id": 2,
+      "title": "Angular Tutorial",
+      "content": "Learn how to build web apps with Angular"
+    }
+  ]
+}
