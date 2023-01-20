@@ -1,0 +1,41 @@
+:host ::ng-deep .p-card-header {
+    padding: 5%;
+    text-align: center;
+}
+
+:host ::ng-deep .p-card {
+    background-color: aqua;
+    background-size: 300% 300%;
+    border-radius: 100px;
+    background-image: linear-gradient(-45deg,
+
+            rgb(183, 93, 105) 50%,
+            rgb(234, 205, 194) 100%);
+    animation: AnimateBG 20s ease infinite;
+}
+
+@keyframes AnimateBG {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+
+:host ::ng-deep .p-card-footer {
+    text-align: center;
+}
+
+#title-form {
+    font-weight: bold;
+    font-size: 19px;
+    color: black;
+}
+

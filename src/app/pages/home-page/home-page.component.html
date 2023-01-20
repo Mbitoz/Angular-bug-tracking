@@ -1,33 +1,46 @@
+<p-menubar [model]="items">
+  <ng-template pTemplate="end">
+    <button pTooltip="Logout" pButton pRipple type="button" icon="pi pi-upload"
+      class="p-button-rounded p-button-secondary" (click)="logout($event)"></button>
+  </ng-template>
+</p-menubar>
+
 <div class="card">
   <p-tabView styleClass="tabview-custom">
     <p-tabPanel>
       <ng-template pTemplate="header">
-        <i class="pi pi-calendar"></i>
-        <span>Header I</span>
+        <span>All Issues</span>
+        <i class="pi pi-bars" style="margin-top: 4px;"></i>
       </ng-template>
       <div class="content">
-
-
         <h1 class="animate__animated animate__bounce">An animated element</h1>
-
       </div>
     </p-tabPanel>
-    <p-tabPanel header="Header II">
+
+    <ng-template [ngIf]="loggedUser.role === 'ADMIN'" [ngIfElse]="defaultUser">
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <span>New Issue</span>
+          <i class="pi pi-plus" style="margin-top: 4px;"></i>
+        </ng-template>
+        <p>Sono admin</p>
+      </p-tabPanel>
+    </ng-template>
+
+    <ng-template #defaultUser>
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <span>My Issue</span>
+          <i class="pi pi-table" style="margin-top: 4px;"></i>
+        </ng-template>
+        <p>Sono User</p>
+      </p-tabPanel>
+    </ng-template>
+
+    <p-tabPanel>
       <ng-template pTemplate="header">
-        <i class="pi pi-user"></i>
-        <span>Header II</span>
-      </ng-template>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-        aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-        aut fugit, sed quia consequuntur magni dolores eos qui ratione
-        voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.</p>
-    </p-tabPanel>
-    <p-tabPanel header="Header III">
-      <ng-template pTemplate="header">
-        <i class="pi pi-search"></i>
-        <span>Header III</span>
-        <i class="pi pi-cog"></i>
+        <span>Search Issue</span>
+        <i class="pi pi-search" style="margin-top: 4px;"></i>
       </ng-template>
       <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
         corrupti quos dolores et quas molestias excepturi sint occaecati
@@ -38,3 +51,5 @@
 
   </p-tabView>
 </div>
+
+<p-confirmPopup></p-confirmPopup>

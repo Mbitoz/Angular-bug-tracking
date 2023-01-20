@@ -1,25 +1,45 @@
 .content {
-    margin: 16px auto;
-    padding: 0 36px;
+  margin: 16px auto;
+  padding: 0 36px;
+}
+
+:host ::ng-deep .tabview-custom {
+
+  i,
+  span {
+    vertical-align: middle;
   }
-  
-  :host ::ng-deep .tabview-custom {
-  
-    i,
-    span {
-      vertical-align: middle;
-    }
-  
-    span {
-      margin: 0 .5rem;
-    }
+
+  span {
+    margin: 0 .5rem;
   }
-  
-  :host ::ng-deep .p-button {
-    margin-right: .25rem;
-  }
-  
-  :host ::ng-deep .p-tabview p {
-    line-height: 1.5;
-    margin: 0;
-  }
+}
+
+:host ::ng-deep .p-button {
+  margin-right: .25rem;
+}
+
+:host ::ng-deep .p-tabview p {
+  line-height: 1.5;
+  margin: 0;
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link{
+  color: whitesmoke;
+  background-size: 300% 300%;
+  background-image: linear-gradient(
+        -45deg, 
+        rgb(26, 20, 35) 0%, 
+        rgb(55, 37, 73) 25%, 
+        rgb(119, 76, 96) 50%, 
+        rgb(183, 93, 105) 75%,
+        rgb(234, 205, 194) 100%
+  );  
+  animation: AnimateBG 20s ease infinite;
+}
+
+@keyframes AnimateBG { 
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}

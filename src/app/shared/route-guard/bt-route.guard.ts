@@ -13,11 +13,7 @@ export class RouteGuardService implements CanActivate {
     private dataLoginService: DataLoginService) { }
 
   async canActivate() {
-    //const user: any = sessionStorage.getItem('user');
-    const user = {
-        username: 'admin',
-        password: 'admin'
-    }
+    const user: any = JSON.parse(sessionStorage.getItem('user'));
     const allUsers = await this.dataLoginService.getUsers().toPromise();
     if(user && allUsers.find(u => u.username === user.username && u.password === user.password)){
         return true;

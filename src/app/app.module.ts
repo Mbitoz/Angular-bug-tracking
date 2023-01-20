@@ -14,6 +14,7 @@ import { FooterComponent } from './pages/footer/footer.component';
 import { CommonSharedModule } from './components/common.module';
 import { DataLoginService } from './shared/services/data-login.service';
 import { RouteGuardService } from './shared/route-guard/bt-route.guard';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 
 
@@ -35,7 +36,9 @@ import { RouteGuardService } from './shared/route-guard/bt-route.guard';
   providers: [
     AppService,
     DataLoginService,
-    RouteGuardService
+    RouteGuardService,
+    MessageService,
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })
