@@ -1,14 +1,17 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "vito",
-      "content": "tenza"
+      "username": "admin",
+      "password": "admin",
+      "role": "ADMIN"
     },
     {
       "id": 2,
-      "title": "Angular Tutorial",
-      "content": "Learn how to build web apps with Angular"
+      "username": "vito",
+      "password": "user",
+      "role": "USER"
+      
     }
   ]
 }

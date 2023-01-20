@@ -12,6 +12,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { CommonSharedModule } from './components/common.module';
+import { DataLoginService } from './shared/services/data-login.service';
+import { RouteGuardService } from './shared/route-guard/bt-route.guard';
 
 
 
@@ -30,7 +32,11 @@ import { CommonSharedModule } from './components/common.module';
     HttpClientModule,
     CommonSharedModule
   ],
-  providers: [AppService],
+  providers: [
+    AppService,
+    DataLoginService,
+    RouteGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
