@@ -45,7 +45,7 @@ export class AllIssuesComponent implements OnInit {
   }
 
   async dropToDo() {
-    if (this.draggedIssue) {
+    if (this.draggedIssue && this.draggedIssue.state != 'TODO') {
         this.draggedIssue.state = 'TODO';
         this.issuesToDo = [...this.issuesToDo, this.draggedIssue];
         this.issuesInProgress = this.issuesInProgress.filter( i => i.id != this.draggedIssue.id);
@@ -57,7 +57,7 @@ export class AllIssuesComponent implements OnInit {
   }
 
   async dropInProgress() {
-    if (this.draggedIssue) {
+    if (this.draggedIssue && this.draggedIssue.state != 'IN_PROGRESS') {
         this.draggedIssue.state = 'IN_PROGRESS';
         this.issuesInProgress = [...this.issuesInProgress, this.draggedIssue];
         this.issuesToDo = this.issuesToDo.filter( i => i.id != this.draggedIssue.id);
@@ -69,7 +69,7 @@ export class AllIssuesComponent implements OnInit {
 }
 
 async dropDone() {
-  if (this.draggedIssue) {
+  if (this.draggedIssue && this.draggedIssue.state != 'DONE') {
       this.draggedIssue.state = 'DONE';
       this.issuesDone = [...this.issuesDone, this.draggedIssue];
       this.issuesToDo = this.issuesToDo.filter( i => i.id != this.draggedIssue.id);
@@ -81,7 +81,7 @@ async dropDone() {
 }
 
 async dropDeliverable() {
-  if (this.draggedIssue) {
+  if (this.draggedIssue && this.draggedIssue.state != 'DELIVERABLE') {
       this.draggedIssue.state = 'DELIVERABLE';
       this.issuesDeliverable = [...this.issuesDeliverable, this.draggedIssue];
       this.issuesToDo = this.issuesToDo.filter( i => i.id != this.draggedIssue.id);
