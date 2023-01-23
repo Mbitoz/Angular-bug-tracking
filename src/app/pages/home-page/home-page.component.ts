@@ -1,7 +1,8 @@
 import { Users } from './../../shared/models/data-login.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MenuItem } from 'primeng/api';
+import { AllIssuesComponent } from './pages/all-issues/all-issues.component';
 
 @Component({
   selector: 'app-home-page',
@@ -10,13 +11,18 @@ import { ConfirmationService, MenuItem } from 'primeng/api';
 })
 export class HomePageComponent implements OnInit {
 
+  @ViewChild('allIssues') allIssues: AllIssuesComponent;
+
   items: MenuItem[];
   loggedUser: Users;
+  index: number = 0;
 
   constructor(
     private router: Router,
     private confirmationService: ConfirmationService
-  ) { }
+  ) {
+    
+   }
 
   ngOnInit() {
     this.loggedUser = JSON.parse(sessionStorage.getItem('user'));
@@ -44,6 +50,12 @@ export class HomePageComponent implements OnInit {
         //reject action
       }
     });
+  }
+
+  reinitializeMyComponent(event) {
+    if (event.index === 0) {
+      this.allIssues.ngOnInit();
+    }
   }
 
 }

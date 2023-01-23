@@ -15,6 +15,8 @@ import { CommonSharedModule } from './components/common.module';
 import { DataLoginService } from './shared/services/data-login.service';
 import { RouteGuardService } from './shared/route-guard/bt-route.guard';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { IssuesService } from './shared/services/issues.service';
+import { AllIssuesComponent } from './pages/home-page/pages/all-issues/all-issues.component';
 
 
 
@@ -24,7 +26,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     HomePageComponent,
     LoginPageComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AllIssuesComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     DataLoginService,
     RouteGuardService,
     MessageService,
-    ConfirmationService
+    ConfirmationService,
+    IssuesService
   ],
   bootstrap: [AppComponent]
 })

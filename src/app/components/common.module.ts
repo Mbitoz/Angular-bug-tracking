@@ -17,6 +17,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { DividerModule } from 'primeng/divider';
 
 
 
@@ -41,7 +42,8 @@ registerLocaleData(localeIt, 'it');
         TooltipModule,
         ConfirmPopupModule,
         MessagesModule,
-        MessageModule
+        MessageModule,
+        DividerModule
     ],
     exports: [
         ButtonModule,
@@ -60,7 +62,8 @@ registerLocaleData(localeIt, 'it');
         TooltipModule,
         ConfirmPopupModule,
         MessagesModule,
-        MessageModule
+        MessageModule,
+        DividerModule
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'it-IT' }
