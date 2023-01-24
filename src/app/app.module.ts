@@ -17,6 +17,8 @@ import { RouteGuardService } from './shared/route-guard/bt-route.guard';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { IssuesService } from './shared/services/issues.service';
 import { AllIssuesComponent } from './pages/home-page/pages/all-issues/all-issues.component';
+import { CreateIssueComponent } from './pages/home-page/pages/create-issue/create-issue.component';
+import { TipologicheService } from './shared/services/tipologiche.service';
 
 
 
@@ -27,7 +29,8 @@ import { AllIssuesComponent } from './pages/home-page/pages/all-issues/all-issue
     LoginPageComponent,
     HeaderComponent,
     FooterComponent,
-    AllIssuesComponent
+    AllIssuesComponent,
+    CreateIssueComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { AllIssuesComponent } from './pages/home-page/pages/all-issues/all-issue
     RouteGuardService,
     MessageService,
     ConfirmationService,
-    IssuesService
+    IssuesService,
+    TipologicheService
   ],
   bootstrap: [AppComponent]
 })

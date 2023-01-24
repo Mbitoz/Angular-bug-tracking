@@ -18,7 +18,9 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { DividerModule } from 'primeng/divider';
-
+import { FieldsetModule } from 'primeng/fieldset';
+import { PanelModule } from 'primeng/panel';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 registerLocaleData(localeIt, 'it');
@@ -43,7 +45,10 @@ registerLocaleData(localeIt, 'it');
         ConfirmPopupModule,
         MessagesModule,
         MessageModule,
-        DividerModule
+        DividerModule,
+        FieldsetModule,
+        PanelModule,
+        DropdownModule
     ],
     exports: [
         ButtonModule,
@@ -63,7 +68,10 @@ registerLocaleData(localeIt, 'it');
         ConfirmPopupModule,
         MessagesModule,
         MessageModule,
-        DividerModule
+        DividerModule,
+        FieldsetModule,
+        PanelModule,
+        DropdownModule
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'it-IT' }

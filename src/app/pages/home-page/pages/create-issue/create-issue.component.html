@@ -1,0 +1,66 @@
+<div class="card-wrapper card-space" *ngIf="!loadingData">
+  <div class="card card-bg dimensioneCard mt-3">
+    <div class="card-body">
+      <form [formGroup]="formCreateIssue">
+        <div class="row">
+          <div class="col-3">
+            <span id="title-form">Titolo</span>
+          </div>
+          <div class="col-3">
+            <span id="title-form">Apri per</span>
+          </div>
+          <div class="col-3">
+            <span id="title-form">Assegna a</span>
+          </div>
+          <div class="col-3">
+            <span id="title-form">Priorità</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <input type="text" pInputText formControlName="title">
+          </div>
+          <div class="col-3">
+            <p-dropdown [options]="tipologicaTo" formControlName="openTo" placeholder="Seleziona..." optionLabel="description" optionValue="value" [showClear]="true"></p-dropdown>
+          </div>
+          <div class="col-3">
+            <p-dropdown [options]="allUser" formControlName="openTo" placeholder="Seleziona..." optionLabel="username" optionValue="id" [showClear]="true"></p-dropdown>
+          </div>
+          <div class="col-3">
+            <p-dropdown [showClear]="true" formControlName="priority" name="debitore" optionValue="value"
+            [options]="tipologicaPriority" appendTo="body" placeholder="Seleziona..."
+            emptyMessage="Nessun risultato trovato">
+            <ng-template let-item pTemplate="selectedItem">
+              <ng-container [ngSwitch]="item.value">
+                <div *ngSwitchCase="-1">
+                  <i class="pi pi-arrow-down iconPriority low"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
+                </div>
+                <div *ngSwitchCase="0">
+                  <i class="pi pi-arrows-v iconPriority medium"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
+                </div>
+                <div *ngSwitchCase="1">
+                  <i class="pi pi-arrow-up iconPriority high"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
+                </div>
+              </ng-container>
+            </ng-template>
+
+            <ng-template let-item pTemplate="item">
+              <ng-container [ngSwitch]="item.value">
+                <div *ngSwitchCase="-1">
+                  <i class="pi pi-arrow-down iconPriority low"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
+                </div>
+                <div *ngSwitchCase="0">
+                  <i class="pi pi-arrows-v iconPriority medium"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
+                </div>
+                <div *ngSwitchCase="1">
+                  <i class="pi pi-arrow-up iconPriority high"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
+                </div>
+              </ng-container>
+            </ng-template>
+          </p-dropdown>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

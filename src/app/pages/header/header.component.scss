@@ -2,17 +2,18 @@
   height: 95px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-size: 300% 300%;
-  background-image: linear-gradient(
-        -45deg, 
-        rgb(26, 20, 35) 0%, 
-        rgb(55, 37, 73) 25%, 
-        rgb(119, 76, 96) 50%, 
-        rgb(183, 93, 105) 75%,
-        rgb(234, 205, 194) 100%
-  );  
-  animation: AnimateBG 20s ease infinite;
+   justify-content: center;
+   background-color: #3E4E50;
+  // background-size: 300% 300%;
+  // background-image: linear-gradient(
+  //       -45deg, 
+  //       rgb(26, 20, 35) 0%, 
+  //       rgb(55, 37, 73) 25%, 
+  //       rgb(119, 76, 96) 50%, 
+  //       rgb(183, 93, 105) 75%,
+  //       rgb(234, 205, 194) 100%
+  // );  
+  // animation: AnimateBG 20s ease infinite;
 }
 
 @keyframes AnimateBG { 

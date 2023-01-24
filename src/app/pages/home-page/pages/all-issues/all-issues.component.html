@@ -23,6 +23,23 @@
             <div class="col-12">
               <span class="label-card">Assegnato a: </span><span>{{ issue.assigneTo }}</span>
             </div>
+            <div class="col-12">
+              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd' }}</span>
+            </div>
+            <div class="col-12">
+              <span class="label-card">Priorità: </span>
+              <ng-container [ngSwitch]="issue.priority">
+                <span *ngSwitchCase="-1">
+                  <i class="pi pi-arrow-down iconPriority low" pTooltip="Bassa"></i>
+                </span>
+                <span *ngSwitchCase="0">
+                  <i class="pi pi-arrows-v iconPriority medium" pTooltip="Media"></i>
+                </span>
+                <span *ngSwitchCase="1">
+                  <i class="pi pi-arrow-up iconPriority high" pTooltip="Alta"></i>
+                </span>
+              </ng-container>
+            </div>
           </div>
           <ng-template pTemplate="footer">
             <p-divider></p-divider>
@@ -66,6 +83,23 @@
             <div class="col-12">
               <span class="label-card">Assegnato a: </span><span>{{ issue.assigneTo }}</span>
             </div>
+            <div class="col-12">
+              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd' }}</span>
+            </div>
+            <div class="col-12">
+              <span class="label-card">Priorità: </span>
+              <ng-container [ngSwitch]="issue.priority">
+                <span *ngSwitchCase="-1">
+                  <i class="pi pi-arrow-down iconPriority low" pTooltip="Bassa"></i>
+                </span>
+                <span *ngSwitchCase="0">
+                  <i class="pi pi-arrows-v iconPriority medium" pTooltip="Media"></i>
+                </span>
+                <span *ngSwitchCase="1">
+                  <i class="pi pi-arrow-up iconPriority high" pTooltip="Alta"></i>
+                </span>
+              </ng-container>
+            </div>
           </div>
           <ng-template pTemplate="footer">
             <p-divider></p-divider>
@@ -107,6 +141,23 @@
             </div>
             <div class="col-12">
               <span class="label-card">Assegnato a: </span><span>{{ issue.assigneTo }}</span>
+            </div>
+            <div class="col-12">
+              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd' }}</span>
+            </div>
+            <div class="col-12">
+              <span class="label-card">Priorità: </span>
+              <ng-container [ngSwitch]="issue.priority">
+                <span *ngSwitchCase="-1">
+                  <i class="pi pi-arrow-down iconPriority low" pTooltip="Bassa"></i>
+                </span>
+                <span *ngSwitchCase="0">
+                  <i class="pi pi-arrows-v iconPriority medium" pTooltip="Media"></i>
+                </span>
+                <span *ngSwitchCase="1">
+                  <i class="pi pi-arrow-up iconPriority high" pTooltip="Alta"></i>
+                </span>
+              </ng-container>
             </div>
           </div>
           <ng-template pTemplate="footer">
@@ -151,6 +202,23 @@
             </div>
             <div class="col-12">
               <span class="label-card">Assegnato a: </span><span>{{ issue.assigneTo }}</span>
+            </div>
+            <div class="col-12">
+              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd' }}</span>
+            </div>
+            <div class="col-12">
+              <span class="label-card">Priorità: </span>
+              <ng-container [ngSwitch]="issue.priority">
+                <span *ngSwitchCase="-1">
+                  <i class="pi pi-arrow-down iconPriority low" pTooltip="Bassa"></i>
+                </span>
+                <span *ngSwitchCase="0">
+                  <i class="pi pi-arrows-v iconPriority medium" pTooltip="Media"></i>
+                </span>
+                <span *ngSwitchCase="1">
+                  <i class="pi pi-arrow-up iconPriority high" pTooltip="Alta"></i>
+                </span>
+              </ng-container>
             </div>
           </div>
           <ng-template pTemplate="footer">

@@ -19,21 +19,51 @@
       "title": "isseu1",
       "description": "description1",
       "assigneTo": "Vito",
-      "state": "TODO"
+      "state": "IN_PROGRESS",
+      "openTo": "FE",
+      "priority": 1
     },
     {
       "id": 2,
       "title": "isseu2",
       "description": "description2",
       "assigneTo": "Mario",
-      "state": "IN_PROGRESS"
+      "state": "TODO",
+      "openTo": "BE",
+      "priority": 0
     },
     {
       "id": 3,
       "title": "isseu3",
       "description": "description3",
       "assigneTo": "Roberto",
-      "state": "DONE"
+      "state": "DONE",
+      "openTo": "FE",
+      "priority": -1
+    }
+  ],
+  "tipologicaOpenTo": [
+    {
+      "value": "FE",
+      "description": "FrontEnd"
+    },
+    {
+      "value": "BE",
+      "description": "BackEnd"
+    }
+  ],
+  "tipologicaPriority": [
+    {
+      "value": -1,
+      "description": "Bassa"
+    },
+    {
+      "value": 0,
+      "description": "Media"
+    },
+    {
+      "value": 1,
+      "description": "Alta"
     }
   ]
 }
