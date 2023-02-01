@@ -1,7 +1,7 @@
 <div class="card-wrapper card-space" *ngIf="!loadingData">
   <div class="card card-bg dimensioneCard mt-3">
     <div class="card-body">
-      <form [formGroup]="formCreateIssue">
+      <form [formGroup]="formCreateIssue" (submit)="creaNuovaIssue()">
         <div class="row">
           <div class="col-3">
             <span id="title-form">Titolo</span>
@@ -24,10 +24,10 @@
             <p-dropdown [options]="tipologicaTo" formControlName="openTo" placeholder="Seleziona..." optionLabel="description" optionValue="value" [showClear]="true"></p-dropdown>
           </div>
           <div class="col-3">
-            <p-dropdown [options]="allUser" formControlName="openTo" placeholder="Seleziona..." optionLabel="username" optionValue="id" [showClear]="true"></p-dropdown>
+            <p-dropdown [options]="allUser" formControlName="fkUserId" placeholder="Seleziona..." optionLabel="username" optionValue="id" [showClear]="true"></p-dropdown>
           </div>
           <div class="col-3">
-            <p-dropdown [showClear]="true" formControlName="priority" name="debitore" optionValue="value"
+            <p-dropdown [showClear]="true" formControlName="priority" name="priority" optionValue="value"
             [options]="tipologicaPriority" appendTo="body" placeholder="Seleziona..."
             emptyMessage="Nessun risultato trovato">
             <ng-template let-item pTemplate="selectedItem">
@@ -59,6 +59,20 @@
             </ng-template>
           </p-dropdown>
           </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-12">
+            <span id="title-form">Descrizione</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <textarea rows="5" cols="30" pInputTextarea formControlName="description"></textarea>
+          </div>
+        </div>
+        <div class="text-center mt-5">
+          <button pButton pRipple type="reset" label="Pulisci campi" class="p-button-outlined p-button-secondary" icon="pi pi-trash" iconPos="right"></button>
+          <button [disabled]="formCreateIssue.invalid" pButton pRipple type="submit" label="Crea" class="p-button-raised ml-1" icon="pi pi-check" iconPos="right"></button>
         </div>
       </form>
     </div>

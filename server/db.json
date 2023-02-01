@@ -8,38 +8,33 @@
     },
     {
       "id": 2,
-      "username": "vito",
+      "username": "vito.tenza",
+      "password": "user",
+      "role": "USER"
+    },
+    {
+      "id": 3,
+      "username": "mario.rossi",
+      "password": "user",
+      "role": "USER"
+    },
+    {
+      "id": 4,
+      "username": "roberta.alighieri",
       "password": "user",
       "role": "USER"
     }
   ],
   "issues": [
     {
+      "title": "ff",
+      "openTo": "FE",
+      "fkUserId": 2,
+      "priority": 1,
+      "description": "ffff",
       "id": 1,
-      "title": "isseu1",
-      "description": "description1",
-      "assigneTo": "Vito",
-      "state": "IN_PROGRESS",
-      "openTo": "FE",
-      "priority": 1
-    },
-    {
-      "id": 2,
-      "title": "isseu2",
-      "description": "description2",
-      "assigneTo": "Mario",
       "state": "TODO",
-      "openTo": "BE",
-      "priority": 0
-    },
-    {
-      "id": 3,
-      "title": "isseu3",
-      "description": "description3",
-      "assigneTo": "Roberto",
-      "state": "DONE",
-      "openTo": "FE",
-      "priority": -1
+      "fkUserIdDecode": "vito.tenza"
     }
   ],
   "tipologicaOpenTo": [

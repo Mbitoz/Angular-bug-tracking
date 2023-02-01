@@ -21,6 +21,7 @@ import { DividerModule } from 'primeng/divider';
 import { FieldsetModule } from 'primeng/fieldset';
 import { PanelModule } from 'primeng/panel';
 import { DropdownModule } from 'primeng/dropdown';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 
 registerLocaleData(localeIt, 'it');
@@ -48,7 +49,8 @@ registerLocaleData(localeIt, 'it');
         DividerModule,
         FieldsetModule,
         PanelModule,
-        DropdownModule
+        DropdownModule,
+        InputTextareaModule
     ],
     exports: [
         ButtonModule,
@@ -71,7 +73,8 @@ registerLocaleData(localeIt, 'it');
         DividerModule,
         FieldsetModule,
         PanelModule,
-        DropdownModule
+        DropdownModule,
+        InputTextareaModule
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'it-IT' }

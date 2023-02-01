@@ -18,5 +18,9 @@ export class IssuesService {
     return this.http.put(`http://localhost:3000/issues/${issue.id}`, issue);
   }
 
+  createIssue(issue: Issues): Observable<any> {
+    return this.http.post(`http://localhost:3000/issues`, issue);
+  }
+
 
 }

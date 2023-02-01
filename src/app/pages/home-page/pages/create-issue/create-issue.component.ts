@@ -1,3 +1,4 @@
+import { Issues } from './../../../../shared/models/issues.model';
 import { Users } from './../../../../shared/models/data-login.model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -5,6 +6,8 @@ import { forkJoin } from 'rxjs';
 import { DataLoginService } from 'src/app/shared/services/data-login.service';
 import { TipologicheService } from 'src/app/shared/services/tipologiche.service';
 import { Tipologica } from 'src/app/shared/models/issues.model';
+import { MessageService } from 'primeng/api';
+import { IssuesService } from 'src/app/shared/services/issues.service';
 
 @Component({
   selector: 'app-create-issue',
@@ -21,7 +24,9 @@ export class CreateIssueComponent implements OnInit {
 
   constructor(
     private dataLogin: DataLoginService,
-    private tipologicaOpenTo: TipologicheService
+    private tipologicaOpenTo: TipologicheService,
+    private messageService: MessageService,
+    private issuesService: IssuesService
   ) { }
 
   ngOnInit() {
@@ -53,11 +58,25 @@ export class CreateIssueComponent implements OnInit {
     this.formCreateIssue = new FormGroup({
       title: new FormControl(null, Validators.required),
       openTo: new FormControl(null, Validators.required),
-      assigneTo: new FormControl(null, Validators.required),
+      fkUserId: new FormControl(null, Validators.required),
       priority: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
-      state: new FormControl(null, Validators.required),
+      description: new FormControl(null, Validators.required)
     });
+  }
+
+  async creaNuovaIssue(){
+    const allIssue = await this.issuesService.getAllIssues().toPromise();
+    let maxId = allIssue.length === 0 ? 0 : Math.max(...allIssue.map(element => element.id))
+    const newIssue: Issues = this.formCreateIssue.value;
+    newIssue.id = maxId + 1;
+    newIssue.state = 'TODO';
+    newIssue.fkUserIdDecode = this.allUser.find(u => u.id === newIssue.fkUserId).username;
+    this.issuesService.createIssue(newIssue).subscribe(
+      res => {
+        this.messageService.add({severity:'success', summary: 'Info', detail: 'Issue n°' + newIssue.id + ' creata con successo'});
+        this.formCreateIssue.reset();
+      }
+    );
   }
 
 }
