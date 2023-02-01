@@ -1,0 +1,43 @@
+.label-expanded-row {
+    font-weight: 700;
+}
+
+.expanded-row-container {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+:host ::ng-deep .p-datatable.p-datatable-gridlines .p-datatable-thead > tr > th {
+    background: lightgrey;
+}
+
+
+:host ::ng-deep .tabview-custom .customIcon {
+
+    i,
+    span {
+      vertical-align: middle;
+    }
+  
+    span {
+      margin: 1rem;
+    }
+  }
+
+  .iconPriority {
+    font-size: 14px;
+}
+
+.high{
+    color: red;
+}
+
+.medium{
+    color: gray;
+}
+
+.low{
+    color: cornflowerblue;
+}

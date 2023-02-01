@@ -22,6 +22,8 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { PanelModule } from 'primeng/panel';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TableModule } from 'primeng/table';
+import { SharedPipeModule } from '../shared/pipe/shared-pipe.module';
 
 
 registerLocaleData(localeIt, 'it');
@@ -50,7 +52,9 @@ registerLocaleData(localeIt, 'it');
         FieldsetModule,
         PanelModule,
         DropdownModule,
-        InputTextareaModule
+        InputTextareaModule,
+        TableModule,
+        SharedPipeModule
     ],
     exports: [
         ButtonModule,
@@ -74,7 +78,9 @@ registerLocaleData(localeIt, 'it');
         FieldsetModule,
         PanelModule,
         DropdownModule,
-        InputTextareaModule
+        InputTextareaModule,
+        TableModule,
+        SharedPipeModule
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'it-IT' }

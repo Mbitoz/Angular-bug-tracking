@@ -19,6 +19,9 @@ import { IssuesService } from './shared/services/issues.service';
 import { AllIssuesComponent } from './pages/home-page/pages/all-issues/all-issues.component';
 import { CreateIssueComponent } from './pages/home-page/pages/create-issue/create-issue.component';
 import { TipologicheService } from './shared/services/tipologiche.service';
+import { SearchIssuesComponent } from './pages/home-page/pages/search-issues/search-issues.component';
+import { SearchIssuesFormComponent } from './pages/home-page/pages/search-issues/search-issues-form/search-issues-form.component';
+import { SearchIssuesTableComponent } from './pages/home-page/pages/search-issues/search-issues-table/search-issues-table.component';
 
 
 
@@ -30,7 +33,10 @@ import { TipologicheService } from './shared/services/tipologiche.service';
     HeaderComponent,
     FooterComponent,
     AllIssuesComponent,
-    CreateIssueComponent
+    CreateIssueComponent,
+    SearchIssuesComponent,
+    SearchIssuesFormComponent,
+    SearchIssuesTableComponent
   ],
   imports: [
     BrowserModule,

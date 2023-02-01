@@ -1,0 +1,12 @@
+<div class="card-wrapper card-space">
+  <div class="card card-bg dimensioneCard mt-3">
+    <div class="card-body">
+      <div>
+        <app-search-issues-form (onSearch)="searchIssue($event)"></app-search-issues-form>
+      </div>
+      <div class="mt-5" *ngIf="dataTableIssues && !loadingRicerca">
+        <app-search-issues-table [dataTableIssues]="dataTableIssues"></app-search-issues-table>
+      </div>
+    </div>
+  </div>
+</div>

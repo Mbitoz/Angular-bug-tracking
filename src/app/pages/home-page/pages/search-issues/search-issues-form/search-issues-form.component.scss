@@ -1,0 +1,32 @@
+#title-form {
+    font-weight: bold;
+    font-size: 17px;
+    color: black;
+}
+
+:host ::ng-deep .p-inputtext  {
+    border-radius: 4px !important;
+}
+
+:host ::ng-deep .p-dropdown {
+    width: 100%;
+    height: 45px;
+    border-bottom: 1px solid #5b6f82;
+    font-weight: 700;
+}
+
+.iconPriority {
+    font-size: 14px;
+}
+
+.high{
+    color: red;
+}
+
+.medium{
+    color: gray;
+}
+
+.low{
+    color: cornflowerblue;
+}

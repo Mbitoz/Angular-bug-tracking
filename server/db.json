@@ -35,6 +35,26 @@
       "id": 1,
       "state": "TODO",
       "fkUserIdDecode": "vito.tenza"
+    },
+    {
+      "title": "prova vito",
+      "openTo": "BE",
+      "fkUserId": 3,
+      "priority": 1,
+      "description": "prova",
+      "id": 2,
+      "state": "TODO",
+      "fkUserIdDecode": "mario.rossi"
+    },
+    {
+      "title": "aaa",
+      "openTo": "FE",
+      "fkUserId": 4,
+      "priority": -1,
+      "description": "aaa",
+      "id": 3,
+      "state": "IN_PROGRESS",
+      "fkUserIdDecode": "roberta.alighieri"
     }
   ],
   "tipologicaOpenTo": [

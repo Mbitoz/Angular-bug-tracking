@@ -1,0 +1,93 @@
+<p-table dataKey="id" styleClass="p-datatable-gridlines" [paginator]="true" [rows]="5"
+  [rowsPerPageOptions]="[5,10,25,50]" [totalRecords]="dataTableIssues.length" [value]="dataTableIssues"
+  [responsive]="true" sortField="id" [sortOrder]="-1" rowExpandMode="single">
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td class="text-center" colspan="7">
+        <b>Nessun risultato trovato</b>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="caption">
+    <div class="table-header">
+      LISTA ISSUES
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 5%">
+      </th>
+      <th class="text-center" pSortableColumn="id">
+        N° Issue <p-sortIcon field="id"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="title">
+        Titolo <p-sortIcon field="title"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="fkUserIdDecode">
+        Assegnato a <p-sortIcon field="fkUserIdDecode"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="state">
+        Stato <p-sortIcon field="state"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="priority">
+        Priorità <p-sortIcon field="priority"></p-sortIcon>
+      </th>
+      <th style="width: 5%">
+        <div class="cell-content-center"></div>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns" let-expanded="expanded">
+    <tr [ngStyle]="{'background-color': expanded ? 'whitesmoke' : 'white' }">
+      <td class="text-center">
+        <div class="d-inline-flex">
+          <button pTooltip="Visualizza Dettaglio" tooltipPosition="top" type="button" pButton pRipple
+            class="p-button-text p-button-rounded p-button-plain" (click)="goToDetail(rowData)" icon="pi pi-pencil">
+          </button>
+        </div>
+      </td>
+      <td class="text-center">{{ rowData.id || '--'}}</td>
+      <td class="text-center">{{ rowData.title || '--'}}</td>
+      <td class="text-center">{{ rowData.fkUserIdDecode || '--'}}</td>
+      <td class="text-center">{{ ( rowData.state | underscore ) || '--'}}</td>
+      <td class="text-center">
+        <ng-container [ngSwitch]="rowData.priority">
+          <div *ngSwitchCase="-1">
+            <i class="pi pi-arrow-down iconPriority low"></i><span style="margin-left: 10px; padding: 1%;">Bassa</span>
+          </div>
+          <div *ngSwitchCase="0">
+            <i class="pi pi-arrows-v iconPriority medium"></i><span style="margin-left: 10px; padding: 1%;">Media</span>
+          </div>
+          <div *ngSwitchCase="1">
+            <i class="pi pi-arrow-up iconPriority high"></i><span style="margin-left: 10px; padding: 1%;">Alta</span>
+          </div>
+        </ng-container>
+      </td>
+
+      <td class="text-center">
+        <div>
+          <button type="button" pButton pRipple [pRowToggler]="rowData"
+            class="p-button-text p-button-rounded p-button-plain customIcon"
+            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-up'"></button>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="rowexpansion" let-rowData>
+    <tr style="background-color: whitesmoke;">
+      <td colspan="7">
+        <div class="expanded-row-container">
+          <div class="row mt-1">
+            <div class="col-12">
+              <span class="label-expanded-row">Aperto per: </span>{{ rowData.openTo || '--'}}
+            </div>
+            <div class="col-12 mt-1">
+              <span class="label-expanded-row">Descrizione: </span>{{ rowData.description || '--'}}
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
