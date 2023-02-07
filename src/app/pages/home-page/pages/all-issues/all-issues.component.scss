@@ -16,7 +16,8 @@
     //         rgb(183, 93, 105) 75%,
     //         rgb(234, 205, 194) 100%);
     // animation: AnimateBG 20s ease infinite;
-    background-color:  #8ca4a6;
+    background-color:  #647e82
+    ;
 }
 
 @keyframes AnimateBG {
@@ -50,8 +51,9 @@
 }
 
 :host ::ng-deep .p-card .p-card-header {
-    background-color: floralwhite;
+    background-color: #3E4E50;
     border-radius: 4px;
+    color: white;
 }
 
 .labelId {

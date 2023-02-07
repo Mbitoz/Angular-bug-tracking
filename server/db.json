@@ -43,7 +43,7 @@
       "priority": 1,
       "description": "prova",
       "id": 2,
-      "state": "DONE",
+      "state": "IN_PROGRESS",
       "fkUserIdDecode": "mario.rossi"
     },
     {

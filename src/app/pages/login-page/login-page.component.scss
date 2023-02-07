@@ -9,11 +9,16 @@
 }
 
 .login-form {
-    background-color: #8ca4a6;
+    background-color:  #647e82;
     padding: 2%;
     border-radius: 5px;
 }
 
 :host ::ng-deep .p-inputtext  {
     border-radius: 4px !important;
+}
+
+.image-box {
+    clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%); 
+    background-color: #3E4E50;
 }
