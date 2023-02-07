@@ -17,27 +17,7 @@
       </div>
     </p-tabPanel>
 
-    <ng-template [ngIf]="loggedUser.role === 'ADMIN'" [ngIfElse]="defaultUser">
-      <p-tabPanel>
-        <ng-template pTemplate="header">
-          <span class="spanCustom">New Issue</span>
-          <i class="pi pi-plus" style="margin-top: 4px;"></i>
-        </ng-template>
-        <div class="content">
-          <app-create-issue></app-create-issue>
-        </div>
-      </p-tabPanel>
-    </ng-template>
 
-    <ng-template #defaultUser>
-      <p-tabPanel>
-        <ng-template pTemplate="header">
-          <span class="spanCustom">My Issue</span>
-          <i class="pi pi-table" style="margin-top: 4px;"></i>
-        </ng-template>
-        <p>Sono User</p>
-      </p-tabPanel>
-    </ng-template>
 
     <p-tabPanel>
       <ng-template pTemplate="header">
@@ -46,6 +26,26 @@
       </ng-template>
       <div class="content">
         <app-search-issues #searchIssues></app-search-issues>
+      </div>
+    </p-tabPanel>
+
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <span class="spanCustom">Overview</span>
+        <i class="pi pi-chart-pie" style="margin-top: 4px;"></i>
+      </ng-template>
+      <div class="content">
+        <app-panoramica-issues #panoramicaIssues></app-panoramica-issues>
+      </div>
+    </p-tabPanel>
+
+    <p-tabPanel *ngIf="loggedUser.role === 'ADMIN'">
+      <ng-template pTemplate="header">
+        <span class="spanCustom">New Issue</span>
+        <i class="pi pi-plus" style="margin-top: 4px;"></i>
+      </ng-template>
+      <div class="content">
+        <app-create-issue></app-create-issue>
       </div>
     </p-tabPanel>
 

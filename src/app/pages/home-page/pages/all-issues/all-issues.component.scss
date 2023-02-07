@@ -68,14 +68,28 @@
     font-size: 14px;
 }
 
-.high{
+.high {
     color: red;
 }
 
-.medium{
+.medium {
     color: gray;
 }
 
-.low{
+.low {
     color: cornflowerblue;
+}
+
+.field-checkbox {
+    font-weight: 700;
+    -moz-box-shadow: 0 0 25px lightgray;
+    -webkit-box-shadow: 0 0 25px lightgray;
+    box-shadow: 0 0 25px lightgray;
+    padding: 8px;
+    border-radius: 7px;
+}
+
+.container-check {
+    display: flex;
+    justify-content: center;
 }

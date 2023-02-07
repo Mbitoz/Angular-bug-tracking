@@ -22,6 +22,7 @@ import { TipologicheService } from './shared/services/tipologiche.service';
 import { SearchIssuesComponent } from './pages/home-page/pages/search-issues/search-issues.component';
 import { SearchIssuesFormComponent } from './pages/home-page/pages/search-issues/search-issues-form/search-issues-form.component';
 import { SearchIssuesTableComponent } from './pages/home-page/pages/search-issues/search-issues-table/search-issues-table.component';
+import { PanoramicaIssuesComponent } from './pages/home-page/pages/panoramica-issues/panoramica-issues.component';
 
 
 
@@ -36,7 +37,8 @@ import { SearchIssuesTableComponent } from './pages/home-page/pages/search-issue
     CreateIssueComponent,
     SearchIssuesComponent,
     SearchIssuesFormComponent,
-    SearchIssuesTableComponent
+    SearchIssuesTableComponent,
+    PanoramicaIssuesComponent
   ],
   imports: [
     BrowserModule,

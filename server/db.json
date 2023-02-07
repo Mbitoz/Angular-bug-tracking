@@ -43,7 +43,7 @@
       "priority": 1,
       "description": "prova",
       "id": 2,
-      "state": "TODO",
+      "state": "DONE",
       "fkUserIdDecode": "mario.rossi"
     },
     {
@@ -55,6 +55,16 @@
       "id": 3,
       "state": "IN_PROGRESS",
       "fkUserIdDecode": "roberta.alighieri"
+    },
+    {
+      "title": "Prova Chart",
+      "openTo": "BE",
+      "fkUserId": 3,
+      "priority": 1,
+      "description": "Prova pie chart",
+      "id": 4,
+      "state": "DONE",
+      "fkUserIdDecode": "mario.rossi"
     }
   ],
   "tipologicaOpenTo": [

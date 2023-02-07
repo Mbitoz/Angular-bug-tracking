@@ -1,3 +1,10 @@
+<div class="container-check mb-4" *ngIf="loggedUser.role === 'USER'">
+  <div class="field-checkbox">
+    <p-checkbox class="mb-1" [(ngModel)]="checked" [binary]="true" inputId="binary" (onChange)="filterIssue($event)"></p-checkbox>
+    <label for="binary" style="margin-left: 10px; cursor: pointer;">Only my issue</label>
+  </div>
+</div>
+
 <div class="container-issues">
   <div class="child-div" style="margin-right: 2%;" pDroppable="issue" (onDrop)="dropToDo()">
     <div class="text-center">
@@ -24,7 +31,8 @@
               <span class="label-card">Assegnato a: </span><span>{{ issue.fkUserIdDecode }}</span>
             </div>
             <div class="col-12">
-              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd' }}</span>
+              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd'
+                }}</span>
             </div>
             <div class="col-12">
               <span class="label-card">Priorità: </span>
@@ -84,7 +92,8 @@
               <span class="label-card">Assegnato a: </span><span>{{ issue.fkUserIdDecode }}</span>
             </div>
             <div class="col-12">
-              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd' }}</span>
+              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd'
+                }}</span>
             </div>
             <div class="col-12">
               <span class="label-card">Priorità: </span>
@@ -143,7 +152,8 @@
               <span class="label-card">Assegnato a: </span><span>{{ issue.fkUserIdDecode }}</span>
             </div>
             <div class="col-12">
-              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd' }}</span>
+              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd'
+                }}</span>
             </div>
             <div class="col-12">
               <span class="label-card">Priorità: </span>
@@ -178,15 +188,17 @@
     </ng-template>
   </div>
 
-  <div class="child-div" pDroppable="issue" (onDrop)="dropDeliverable()" [pDroppableDisabled]="loggedUser.role === 'USER' ? true : false">
+  <div class="child-div" pDroppable="issue" (onDrop)="dropDeliverable()"
+    [pDroppableDisabled]="loggedUser.role === 'USER' ? true : false">
     <div class="text-center">
       <b class="state-issue">DELIVERABLE</b>
     </div>
     <ng-template [ngIf]="issuesDeliverable && issuesDeliverable.length > 0" [ngIfElse]="noIssuesInDeliverable">
       <div *ngFor="let issue of issuesDeliverable" class="p-3">
-        <p-card tooltipPosition="top" [pTooltip]="loggedUser.role === 'USER' ? 'Non hai i permessi per modificare le issues in stato Deliverable' : ''" 
-          pDraggable="issue" (onDragStart)="dragStart(issue)"
-          (onDragEnd)="dragEnd()" [pDraggableDisabled]="loggedUser.role === 'USER' ? true : false">
+        <p-card tooltipPosition="top"
+          [pTooltip]="loggedUser.role === 'USER' ? 'Non hai i permessi per modificare le issues in stato Deliverable' : ''"
+          pDraggable="issue" (onDragStart)="dragStart(issue)" (onDragEnd)="dragEnd()"
+          [pDraggableDisabled]="loggedUser.role === 'USER' ? true : false">
           <ng-template pTemplate="header">
             <div class="text-center labelId">
               Issues n° {{ issue.id }}
@@ -204,7 +216,8 @@
               <span class="label-card">Assegnato a: </span><span>{{ issue.fkUserIdDecode }}</span>
             </div>
             <div class="col-12">
-              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd' }}</span>
+              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd'
+                }}</span>
             </div>
             <div class="col-12">
               <span class="label-card">Priorità: </span>

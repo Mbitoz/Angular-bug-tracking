@@ -24,6 +24,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TableModule } from 'primeng/table';
 import { SharedPipeModule } from '../shared/pipe/shared-pipe.module';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { CheckboxModule } from 'primeng/checkbox';
+import {ChartModule} from 'primeng/chart';
 
 
 registerLocaleData(localeIt, 'it');
@@ -54,7 +57,10 @@ registerLocaleData(localeIt, 'it');
         DropdownModule,
         InputTextareaModule,
         TableModule,
-        SharedPipeModule
+        SharedPipeModule,
+        ProgressBarModule,
+        CheckboxModule,
+        ChartModule
     ],
     exports: [
         ButtonModule,
@@ -80,7 +86,10 @@ registerLocaleData(localeIt, 'it');
         DropdownModule,
         InputTextareaModule,
         TableModule,
-        SharedPipeModule
+        SharedPipeModule,
+        ProgressBarModule,
+        CheckboxModule,
+        ChartModule
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'it-IT' }

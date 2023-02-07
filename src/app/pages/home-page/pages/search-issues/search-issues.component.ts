@@ -29,8 +29,10 @@ export class SearchIssuesComponent implements OnInit {
     this.loadingRicerca = true;
     this.issuesService.searchIssue(requestBody).subscribe(
       resp => {
-        this.dataTableIssues = resp;
-        this.loadingRicerca = false;
+        setTimeout(() => {
+          this.dataTableIssues = resp;
+          this.loadingRicerca = false;
+        }, 1000);
       }
     );
   }
