@@ -1,3 +1,63 @@
+
+<div class="login-page grid grid-nogutter surface-section text-800">
+  <div class="col-12 md:col-7 p-6 text-center md:text-left flex align-items-center ">
+      <section>
+          <span class="block text-6xl font-bold mb-1">Create the screens</span>
+          <div class="text-6xl text-primary font-bold mb-3">your visitors deserve to see</div>
+          <p class="mt-0 mb-4 text-700 line-height-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          
+          <div class="login-form">
+            <div *ngIf="checkUser">
+              <div class="row mt-3 justify-content-center">
+                <div class="col-8">
+                  <p-skeleton styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                  <p-skeleton width="10rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                  <p-skeleton width="5rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                  <p-skeleton height="2rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                  <p-skeleton width="10rem" height="4rem" borderRadius="16px"></p-skeleton>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="!checkUser" >
+              <form [formGroup]="formLogin" (keyup.enter)="login()">
+                <div class="row mt-3 justify-content-center">
+                  <div class="col-8">
+                    <span class="p-float-label">
+                      <span id="title-form">Username</span>
+                      <input type="text" pInputText formControlName="username">
+                    </span>
+                  </div>
+                  <div class="col-8">
+                    <span class="p-float-label">
+                      <span id="title-form">Password</span>
+                      <input type="password" pPassword [feedback]="false" formControlName="password" />
+                    </span>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="row mt-3 mb-1 animate__animated animate__headShake text-center" *ngIf="invalidLogin">
+              <p-message severity="warn" text="Username o password errati"></p-message>  
+            </div>
+            <div *ngIf="!checkUser" class="text-center mt-1">
+              <button [disabled]="formLogin.invalid" pButton pRipple type="button" label="Login" class="p-button-primary"
+                (click)="login()"></button>
+            </div>
+          </div>
+          
+<!-- 
+          <button pButton pRipple label="Learn More" type="button" class="mr-3 p-button-raised"></button>
+          <button pButton pRipple label="Live Demo" type="button" class="p-button-outlined"></button> -->
+      </section>
+  </div>
+  <div class="col-12 md:col-5 overflow-hidden">
+      <img src="assets/images/hero-1.png" alt="Image" class="md:ml-auto block md:h-full" style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%)">
+  </div>
+</div>
+
+
+<!--
 <div class="section d-flex">
   <div class="section-content">
     <p-card [header]="!checkUser ? 'Effettua il Login' : ''" class="text-center" [style]="{width: '700px'}"
@@ -51,3 +111,4 @@
     </p-card>
   </div>
 </div>
+-->

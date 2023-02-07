@@ -23,6 +23,7 @@
     "animate.css": "^4.1.1",
     "bootstrap-italia": "^2.2.0",
     "chart.js": "^2.9.4",
+    "primeflex": "^3.3.0",
     "primeicons": "^6.0.1",
     "primeng": "^11.2.0",
     "rxjs": "~6.6.0",
