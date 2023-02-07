@@ -1,3 +1,7 @@
 <div class="chart-box">
-  <p-chart type="pie" [data]="data" [style]="{'width': '55%'}"></p-chart>
+  <p-chart type="pie" [data]="data" [style]="{'width': '55%'}" (onDataSelect)="chartClick($event)"></p-chart>
+</div>
+
+<div *ngIf="dataTableIssues.length > 0" class="mt-5">
+  <app-search-issues-table [dataTableIssues]="dataTableIssues"></app-search-issues-table>
 </div>

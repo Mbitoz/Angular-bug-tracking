@@ -53,7 +53,7 @@
       "priority": -1,
       "description": "aaa",
       "id": 3,
-      "state": "IN_PROGRESS",
+      "state": "DONE",
       "fkUserIdDecode": "roberta.alighieri"
     },
     {
