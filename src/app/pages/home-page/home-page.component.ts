@@ -1,7 +1,7 @@
 import { PanoramicaIssuesComponent } from './pages/panoramica-issues/panoramica-issues.component';
 import { Users } from './../../shared/models/data-login.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MenuItem } from 'primeng/api';
 import { AllIssuesComponent } from './pages/all-issues/all-issues.component';
 
@@ -17,20 +17,23 @@ export class HomePageComponent implements OnInit {
 
   items: MenuItem[];
   loggedUser: Users;
-  index: number = 0;
+  index: number;
 
   constructor(
     private router: Router,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private route: ActivatedRoute,
   ) {
-
+    this.route.queryParams.subscribe(params => {
+      this.index = params.index ? parseInt(params.index) : 0;
+    });
   }
 
   ngOnInit() {
     this.loggedUser = JSON.parse(sessionStorage.getItem('user'));
     this.items = [
       {
-        label: `Benvenuto <b>${this.loggedUser.username} </b>`,
+        label: `<b>${this.loggedUser.username} </b>`,
         icon: 'pi pi-fw pi-user',
         escape: false,
       }
@@ -61,6 +64,10 @@ export class HomePageComponent implements OnInit {
     if (event.index === 2) {
       this.panoramicaIssues.ngOnInit();
     }
+  }
+
+  redirectToDashboard(){
+    this.router.navigate(['/angular-project/dashboard']);
   }
 
 }

@@ -26,8 +26,8 @@ export class LoginPageComponent implements OnInit {
     const user = JSON.parse(sessionStorage.getItem('user'));
     setTimeout(() => {
       if(user){
-        this.messageService.add({severity:'info', summary: 'Info', detail: 'Sei già autenticato, verrai reindirizzato alla Home'});
-        this.router.navigate(['/angular-project/home-page']);
+        this.messageService.add({severity:'info', summary: 'Info', detail: 'Sei già autenticato, verrai reindirizzato alla Dashboard'});
+        this.router.navigate(['/angular-project/dashboard']);
       } else {
         this.checkUser = false;
       }
@@ -58,7 +58,7 @@ export class LoginPageComponent implements OnInit {
         const userLogged: any = response.find( u => u.username === username && u.password === password);
         if(userLogged){
           sessionStorage.setItem('user',JSON.stringify(userLogged));
-          this.router.navigate(['/angular-project/home-page']);
+          this.router.navigate(['/angular-project/dashboard']);
         } else {
           this.invalidLogin = true;
         }

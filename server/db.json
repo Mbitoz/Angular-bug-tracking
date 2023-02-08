@@ -33,7 +33,7 @@
       "priority": 1,
       "description": "ffff",
       "id": 1,
-      "state": "TODO",
+      "state": "IN_PROGRESS",
       "fkUserIdDecode": "vito.tenza"
     },
     {
@@ -43,7 +43,7 @@
       "priority": 1,
       "description": "prova",
       "id": 2,
-      "state": "IN_PROGRESS",
+      "state": "TODO",
       "fkUserIdDecode": "mario.rossi"
     },
     {
@@ -63,7 +63,7 @@
       "priority": 1,
       "description": "Prova pie chart",
       "id": 4,
-      "state": "DONE",
+      "state": "TODO",
       "fkUserIdDecode": "mario.rossi"
     }
   ],

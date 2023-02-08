@@ -1,4 +1,8 @@
 <p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <button pTooltip="Dashboard" pButton pRipple type="button" icon="pi pi-home"
+      class="p-button-rounded" style="background-color: #3E4E50;border-color: #647e82;" (click)="redirectToDashboard()"></button>
+  </ng-template>
   <ng-template pTemplate="end">
     <button pTooltip="Logout" pButton pRipple type="button" icon="pi pi-upload"
       class="p-button-rounded p-button-secondary" (click)="logout($event)"></button>
@@ -6,7 +10,7 @@
 </p-menubar>
 
 <div class="card">
-  <p-tabView styleClass="tabview-custom" (onChange)="reinitializeMyComponent($event)">
+  <p-tabView styleClass="tabview-custom" (onChange)="reinitializeMyComponent($event)" [(activeIndex)]="index">
     <p-tabPanel>
       <ng-template pTemplate="header">
         <span class="spanCustom">All Issues</span>

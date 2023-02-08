@@ -23,6 +23,7 @@ import { SearchIssuesComponent } from './pages/home-page/pages/search-issues/sea
 import { SearchIssuesFormComponent } from './pages/home-page/pages/search-issues/search-issues-form/search-issues-form.component';
 import { SearchIssuesTableComponent } from './pages/home-page/pages/search-issues/search-issues-table/search-issues-table.component';
 import { PanoramicaIssuesComponent } from './pages/home-page/pages/panoramica-issues/panoramica-issues.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 
@@ -38,7 +39,8 @@ import { PanoramicaIssuesComponent } from './pages/home-page/pages/panoramica-is
     SearchIssuesComponent,
     SearchIssuesFormComponent,
     SearchIssuesTableComponent,
-    PanoramicaIssuesComponent
+    PanoramicaIssuesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

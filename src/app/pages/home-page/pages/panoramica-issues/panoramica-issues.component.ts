@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Issues } from 'src/app/shared/models/issues.model';
 import { IssuesService } from 'src/app/shared/services/issues.service';
 
@@ -8,6 +8,8 @@ import { IssuesService } from 'src/app/shared/services/issues.service';
   styleUrls: ['./panoramica-issues.component.scss']
 })
 export class PanoramicaIssuesComponent implements OnInit {
+
+  @ViewChild("tableIssues", { static: false }) tableIssues: ElementRef;
 
   data: any;
   allIssues: Array<Issues> = [];
@@ -21,31 +23,33 @@ export class PanoramicaIssuesComponent implements OnInit {
   async ngOnInit() {
     this.dataTableIssues = [];
     this.allIssues = await this.issuesService.getAllIssues().toPromise();
-    this.data = {
-      labels: ['Todo', 'In Progress', 'Done', 'Deliverable'],
-      datasets: [
-        {
-          data: [
-            this.allIssues.filter(i => i.state === 'TODO').length,
-            this.allIssues.filter(i => i.state === 'IN_PROGRESS').length,
-            this.allIssues.filter(i => i.state === 'DONE').length,
-            this.allIssues.filter(i => i.state === 'DELIVERABLE').length
-          ],
-          backgroundColor: [
-            "#42A5F5",
-            "#ff6699",
-            "#FFA726",
-            "#66BB6A",
-          ],
-          hoverBackgroundColor: [
-            "#64B5F6",
-            "#ff99bb",
-            "#FFB74D",
-            "#81C784",
-          ]
-        }
-      ]
-    };
+    if(this.allIssues.length > 0){
+      this.data = {
+        labels: ['Todo', 'In Progress', 'Done', 'Deliverable'],
+        datasets: [
+          {
+            data: [
+              this.allIssues.filter(i => i.state === 'TODO').length,
+              this.allIssues.filter(i => i.state === 'IN_PROGRESS').length,
+              this.allIssues.filter(i => i.state === 'DONE').length,
+              this.allIssues.filter(i => i.state === 'DELIVERABLE').length
+            ],
+            backgroundColor: [
+              "#42A5F5",
+              "#ff6699",
+              "#FFA726",
+              "#66BB6A",
+            ],
+            hoverBackgroundColor: [
+              "#64B5F6",
+              "#ff99bb",
+              "#FFB74D",
+              "#81C784",
+            ]
+          }
+        ]
+      };
+    }
   }
 
   chartClick(event) {
@@ -64,6 +68,9 @@ export class PanoramicaIssuesComponent implements OnInit {
         this.dataTableIssues = this.allIssues.filter(i => i.state === 'DELIVERABLE');
         break;
     }
+    setTimeout(() => {
+      this.tableIssues.nativeElement.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 200);
   }
 
 }
