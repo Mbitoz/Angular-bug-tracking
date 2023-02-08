@@ -1,3 +1,4 @@
+import { SearchIssuesComponent } from './pages/search-issues/search-issues.component';
 import { PanoramicaIssuesComponent } from './pages/panoramica-issues/panoramica-issues.component';
 import { Users } from './../../shared/models/data-login.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -13,6 +14,7 @@ import { AllIssuesComponent } from './pages/all-issues/all-issues.component';
 export class HomePageComponent implements OnInit {
 
   @ViewChild('allIssues') allIssues: AllIssuesComponent;
+  @ViewChild('searchIssues') searchIssues: SearchIssuesComponent;
   @ViewChild('panoramicaIssues') panoramicaIssues: PanoramicaIssuesComponent;
 
   items: MenuItem[];
@@ -58,8 +60,16 @@ export class HomePageComponent implements OnInit {
   }
 
   reinitializeMyComponent(event) {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { index: event.index },
+      queryParamsHandling: 'merge',
+    });
     if (event.index === 0) {
       this.allIssues.ngOnInit();
+    }
+    if (event.index === 1) {
+      this.searchIssues.dataTableIssues = null;
     }
     if (event.index === 2) {
       this.panoramicaIssues.ngOnInit();

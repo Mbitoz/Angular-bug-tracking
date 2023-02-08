@@ -1,12 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { MessageService } from 'primeng/api';
-import { forkJoin } from 'rxjs';
-import { Users } from 'src/app/shared/models/data-login.model';
-import { Issues, Tipologica } from 'src/app/shared/models/issues.model';
-import { DataLoginService } from 'src/app/shared/services/data-login.service';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Issues } from 'src/app/shared/models/issues.model';
 import { IssuesService } from 'src/app/shared/services/issues.service';
-import { TipologicheService } from 'src/app/shared/services/tipologiche.service';
 
 @Component({
   selector: 'app-search-issues',
@@ -14,6 +8,8 @@ import { TipologicheService } from 'src/app/shared/services/tipologiche.service'
   styleUrls: ['./search-issues.component.scss']
 })
 export class SearchIssuesComponent implements OnInit {
+
+  @ViewChild("tableIssues", { static: false }) tableIssues: ElementRef;
 
   loadingRicerca: boolean = false;
   dataTableIssues: Array<Issues>;
@@ -32,6 +28,9 @@ export class SearchIssuesComponent implements OnInit {
         setTimeout(() => {
           this.dataTableIssues = resp;
           this.loadingRicerca = false;
+          setTimeout(() => {
+            this.tableIssues.nativeElement.scrollIntoView({ behavior: "smooth", block: "center" });
+          }, 200);
         }, 1000);
       }
     );

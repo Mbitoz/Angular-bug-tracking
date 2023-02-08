@@ -15,22 +15,11 @@ export class RouteGuardService implements CanActivate {
   async canActivate() {
     const user: any = JSON.parse(sessionStorage.getItem('user'));
     const allUsers = await this.dataLoginService.getUsers().toPromise();
-    if(user && allUsers.find(u => u.username === user.username && u.password === user.password)){
-        return true;
+    if (user && allUsers.find(u => u.username.toUpperCase() === user.username.toUpperCase() && u.password === user.password)) {
+      return true;
     } else {
-        this.openSnackBar('', '', false);
-        this.router.navigate(['']);
-        return false;
-    }
-  }
-
-  openSnackBar(message: string, action: string, error: boolean) {
-    if(error){
-      //this.snackBar.open(message, action);
-    }else{
-    //   this.snackBar.open(message, action, {
-    //     duration: 5000
-    //   });
+      this.router.navigate(['']);
+      return false;
     }
   }
 }

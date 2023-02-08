@@ -2,6 +2,7 @@ import { Issues } from './../../../../shared/models/issues.model';
 import { IssuesService } from './../../../../shared/services/issues.service';
 import { Component, OnInit } from '@angular/core';
 import { Users } from 'src/app/shared/models/data-login.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-issues',
@@ -20,7 +21,8 @@ export class AllIssuesComponent implements OnInit {
   checked: boolean = false;
 
   constructor(
-    private issuesService: IssuesService
+    private issuesService: IssuesService,
+    private router: Router
   ) {
   }
 
@@ -101,5 +103,12 @@ export class AllIssuesComponent implements OnInit {
     this.getIssues(event.checked);
   }
 
+  goToDetail(id: number){
+    this.router.navigate(['/angular-project/detail'], {
+      queryParams: {
+        id: id,
+      }
+    });
+  }
 
 }

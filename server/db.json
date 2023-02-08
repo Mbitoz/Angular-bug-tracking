@@ -27,24 +27,24 @@
   ],
   "issues": [
     {
-      "title": "ff",
+      "title": "aaaa",
       "openTo": "FE",
       "fkUserId": 2,
       "priority": 1,
       "description": "ffff",
-      "id": 1,
       "state": "IN_PROGRESS",
+      "id": 1,
       "fkUserIdDecode": "vito.tenza"
     },
     {
       "title": "prova vito",
       "openTo": "BE",
-      "fkUserId": 3,
+      "fkUserId": 2,
       "priority": 1,
       "description": "prova",
+      "state": "DONE",
       "id": 2,
-      "state": "TODO",
-      "fkUserIdDecode": "mario.rossi"
+      "fkUserIdDecode": "vito.tenza"
     },
     {
       "title": "aaa",
@@ -53,7 +53,7 @@
       "priority": -1,
       "description": "aaa",
       "id": 3,
-      "state": "DONE",
+      "state": "IN_PROGRESS",
       "fkUserIdDecode": "roberta.alighieri"
     },
     {
@@ -62,7 +62,27 @@
       "fkUserId": 3,
       "priority": 1,
       "description": "Prova pie chart",
+      "state": "DELIVERABLE",
       "id": 4,
+      "fkUserIdDecode": "mario.rossi"
+    },
+    {
+      "title": "asas",
+      "openTo": "FE",
+      "fkUserId": 2,
+      "priority": -1,
+      "description": "aa",
+      "id": 5,
+      "state": "TODO",
+      "fkUserIdDecode": "vito.tenza"
+    },
+    {
+      "title": "prova issue",
+      "openTo": "FE",
+      "fkUserId": 3,
+      "priority": -1,
+      "description": "aaa",
+      "id": 6,
       "state": "TODO",
       "fkUserIdDecode": "mario.rossi"
     }

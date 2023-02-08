@@ -39,5 +39,16 @@ export class IssuesService {
     });
   }
 
+  getIssueById(id: number): Observable<any> {
+    const params = {
+      id: id
+    };
+    const queryParameter = omitBy(params, isNil);
+    const url = `http://localhost:3000/issues`;
+    return this.http.get(url, {
+      params: queryParameter
+    });
+  }
+
 
 }

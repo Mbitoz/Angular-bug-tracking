@@ -7,7 +7,7 @@
       <div *ngIf="loadingRicerca" class="mt-5 mb-4">
         <p-progressBar mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
       </div>
-      <div class="mt-5" *ngIf="dataTableIssues && !loadingRicerca">
+      <div #tableIssues class="mt-5" *ngIf="dataTableIssues && !loadingRicerca">
         <app-search-issues-table [dataTableIssues]="dataTableIssues"></app-search-issues-table>
       </div>
     </div>

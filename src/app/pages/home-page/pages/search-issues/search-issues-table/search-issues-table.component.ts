@@ -1,5 +1,6 @@
 import { Issues } from './../../../../../shared/models/issues.model';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-issues-table',
@@ -10,13 +11,19 @@ export class SearchIssuesTableComponent implements OnInit {
 
   @Input() dataTableIssues: Array<Issues>;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit() {
   }
 
-  goToDetail(){
-
+  goToDetail(id: number){
+    this.router.navigate(['/angular-project/detail'], {
+      queryParams: {
+        id: id,
+      }
+    });
   }
 
 }

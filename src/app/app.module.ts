@@ -24,8 +24,7 @@ import { SearchIssuesFormComponent } from './pages/home-page/pages/search-issues
 import { SearchIssuesTableComponent } from './pages/home-page/pages/search-issues/search-issues-table/search-issues-table.component';
 import { PanoramicaIssuesComponent } from './pages/home-page/pages/panoramica-issues/panoramica-issues.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-
-
+import { DetailIssueComponent } from './pages/home-page/pages/detail-issue/detail-issue.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     SearchIssuesFormComponent,
     SearchIssuesTableComponent,
     PanoramicaIssuesComponent,
-    DashboardComponent
+    DashboardComponent,
+    DetailIssueComponent
   ],
   imports: [
     BrowserModule,

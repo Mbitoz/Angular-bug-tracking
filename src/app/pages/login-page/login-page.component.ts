@@ -55,7 +55,7 @@ export class LoginPageComponent implements OnInit {
     const password = this.formLogin.controls['password'].value;
     this.dataLogin.getUsers().subscribe(
       response => {
-        const userLogged: any = response.find( u => u.username === username && u.password === password);
+        const userLogged: any = response.find( u => u.username.toUpperCase() === username.toUpperCase() && u.password === password);
         if(userLogged){
           sessionStorage.setItem('user',JSON.stringify(userLogged));
           this.router.navigate(['/angular-project/dashboard']);

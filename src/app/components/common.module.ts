@@ -26,7 +26,8 @@ import { TableModule } from 'primeng/table';
 import { SharedPipeModule } from '../shared/pipe/shared-pipe.module';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { CheckboxModule } from 'primeng/checkbox';
-import {ChartModule} from 'primeng/chart';
+import { ChartModule } from 'primeng/chart';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 
 registerLocaleData(localeIt, 'it');
@@ -60,7 +61,8 @@ registerLocaleData(localeIt, 'it');
         SharedPipeModule,
         ProgressBarModule,
         CheckboxModule,
-        ChartModule
+        ChartModule,
+        SelectButtonModule
     ],
     exports: [
         ButtonModule,
@@ -89,7 +91,8 @@ registerLocaleData(localeIt, 'it');
         SharedPipeModule,
         ProgressBarModule,
         CheckboxModule,
-        ChartModule
+        ChartModule,
+        SelectButtonModule
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'it-IT' }
