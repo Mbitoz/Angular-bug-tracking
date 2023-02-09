@@ -12,15 +12,15 @@ export class IssuesService {
   constructor(private http: HttpClient) { }
 
   getAllIssues(): Observable<Array<Issues>> {
-    return this.http.get<Array<Issues>>('http://localhost:3000/issues');
+    return this.http.get<Array<Issues>>('https://json-server-bt.vercel.app/issues');
   }
 
   modifyIssue(issue: Issues): Observable<any> {
-    return this.http.put(`http://localhost:3000/issues/${issue.id}`, issue);
+    return this.http.put(`https://json-server-bt.vercel.app/issues/${issue.id}`, issue);
   }
 
   createIssue(issue: Issues): Observable<any> {
-    return this.http.post(`http://localhost:3000/issues`, issue);
+    return this.http.post(`https://json-server-bt.vercel.app/issues`, issue);
   }
 
   searchIssue(issue: Issues): Observable<any> {
@@ -33,7 +33,7 @@ export class IssuesService {
       state: issue.state
     };
     const queryParameter = omitBy(params, isNil);
-    const url = `http://localhost:3000/issues`;
+    const url = `https://json-server-bt.vercel.app/issues`;
     return this.http.get(url, {
       params: queryParameter
     });
@@ -44,7 +44,7 @@ export class IssuesService {
       id: id
     };
     const queryParameter = omitBy(params, isNil);
-    const url = `http://localhost:3000/issues`;
+    const url = `https://json-server-bt.vercel.app/issues`;
     return this.http.get(url, {
       params: queryParameter
     });

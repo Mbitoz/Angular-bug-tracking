@@ -11,11 +11,11 @@ export class TipologicheService {
   constructor(private http: HttpClient) { }
 
   getTipologiaOpenTo(): Observable<Array<Tipologica>> {
-    return this.http.get<Array<Tipologica>>('http://localhost:3000/tipologicaOpenTo');
+    return this.http.get<Array<Tipologica>>('https://json-server-bt.vercel.app/tipologicaOpenTo');
   }
 
   getTipologiaPriority(): Observable<Array<Tipologica>> {
-    return this.http.get<Array<Tipologica>>('http://localhost:3000/tipologicaPriority');
+    return this.http.get<Array<Tipologica>>('https://json-server-bt.vercel.app/tipologicaPriority');
   }
 
 }
