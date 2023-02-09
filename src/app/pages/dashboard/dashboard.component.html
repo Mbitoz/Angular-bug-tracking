@@ -4,45 +4,45 @@
       <span class="text-900">Benvenuto, </span>
       <span style="color: #647e82;">{{loggedUser.username}}</span>
   </div>
-  <div class="text-700 mb-6 animate__animated animate__zoomIn">Prendi il controllo del tuo workflow! Questa dashboard ti dà una panoramica completa sulle funzionalità dell'applicazione.</div>
+  <div class="text-700 mb-6 animate__animated animate__zoomIn">Questa dashboard ti dà una panoramica completa sulle funzionalità dell'applicazione.</div>
   <div class="grid animate__animated animate__zoomIn animate__slow">
       <div class="col-12 md:col-4 mb-4 px-5">
-          <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px; cursor: pointer;" (click)="redirectTo('all-issues')">
+          <span class="p-3 shadow-2 mb-3 inline-block surface-card span-button-dashboard" style="border-radius: 10px; cursor: pointer;" (click)="redirectTo('all-issues')">
               <i class="pi pi-bars text-4xl icon-dashboard"></i>
           </span>
           <div class="text-900 text-xl mb-3 font-medium">All Issues</div>
           <span class="text-700 line-height-3">Esplora tutti i problemi con un solo clic! Clicca sul bottone <b>'All Issues'</b> per avere accesso immediato a una visione completa di tutte le issues segnalate.</span>
       </div>
       <div class="col-12 md:col-4 mb-4 px-5">
-          <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px; cursor: pointer;" (click)="redirectTo('search')">
+          <span class="p-3 shadow-2 mb-3 inline-block surface-card span-button-dashboard" style="border-radius: 10px; cursor: pointer;" (click)="redirectTo('search')">
               <i class="pi pi-search text-4xl icon-dashboard" ></i>
           </span>
           <div class="text-900 text-xl mb-3 font-medium">Search Issues</div>
           <span class="text-700 line-height-3">Trova subito ciò che stai cercando! Clicca sul bottone <b>'Search Issues'</b> per accedere alla ricerca, ti aiuterà a trovare rapidamente le issues che stai cercando.</span>
       </div>
       <div class="col-12 md:col-4 mb-4 px-5">
-          <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px;cursor: pointer;" (click)="redirectTo('overview')">
+          <span class="p-3 shadow-2 mb-3 inline-block surface-card span-button-dashboard" style="border-radius: 10px;cursor: pointer;" (click)="redirectTo('overview')">
               <i class="pi pi-chart-pie text-4xl icon-dashboard"></i>
           </span>
           <div class="text-900 text-xl mb-3 font-medium">Overview</div>
           <span class="text-700 line-height-3">Avere una panoramica a portata di clic! Clicca sul bottone <b>'Overview'</b> per avere un resoconto di tutte le issues.</span>
       </div>
       <div class="col-12 md:col-4 mb-4 px-5" *ngIf="loggedUser.role === 'ADMIN'">
-          <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px;cursor: pointer;" (click)="redirectTo('new-issue')">
+          <span class="p-3 shadow-2 mb-3 inline-block surface-card span-button-dashboard" style="border-radius: 10px;cursor: pointer;" (click)="redirectTo('new-issue')">
               <i class="pi pi-plus text-4xl icon-dashboard"></i>
           </span>
           <div class="text-900 text-xl mb-3 font-medium">New Issue</div>
           <span class="text-700 line-height-3">Segnala i problemi con facilità! Clicca sul bottone <b>'New Issue'</b> per creare rapidamente una nuova segnalazione di bug.</span>
       </div>
       <div class="col-12 md:col-4 mb-4 px-5">
-          <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px;cursor: pointer;" (click)="redirectTo('git')">
+          <span class="p-3 shadow-2 mb-3 inline-block surface-card span-button-dashboard" style="border-radius: 10px;cursor: pointer;" (click)="redirectTo('git')">
               <i class="pi pi-github text-4xl icon-dashboard"></i>
           </span>
           <div class="text-900 text-xl mb-3 font-medium">Open Source</div>
           <span class="text-700 line-height-3">Accedi al cuore del codice! Clicca sul bottone <b>'Open Source'</b> per esplorare il codice sorgente di questa applicazione e scoprire come funziona. </span>
       </div>
       <div class="col-12 md:col-4 md:mb-4 mb-0 px-3">
-          <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px;cursor: pointer;" (click)="logout()">
+          <span class="p-3 shadow-2 mb-3 inline-block surface-card span-button-dashboard" style="border-radius: 10px;cursor: pointer;" (click)="logout()">
               <i class="pi pi-upload text-4xl icon-dashboard"></i>
           </span>
           <div class="text-900 text-xl mb-3 font-medium">Logout</div>

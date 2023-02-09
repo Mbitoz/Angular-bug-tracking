@@ -5,3 +5,8 @@
 .font-medium {
     font-weight: 600 !important;
 }
+
+.span-button-dashboard:hover {
+    animation: rubberBand;
+    animation-duration: 1s;
+}
