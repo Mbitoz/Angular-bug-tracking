@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Users } from '../models/data-login.model';
@@ -11,7 +11,12 @@ export class DataLoginService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<Array<Users>> {
-    return this.http.get<Array<Users>>('https://json-server-bt.vercel.app/users');
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('cache-control', 'no-cache');
+    headers = headers.append('x-apikey', '147aafd40ac94c56545d2806b085dbe4f5c5d');
+    return this.http.get<Array<Users>>('https://appbt-fe36.restdb.io/rest/utenti', {
+      headers: headers
+    });
   }
 
 }
