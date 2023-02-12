@@ -81,7 +81,6 @@ export class CreateIssueComponent implements OnInit {
     const newIssue: Issues = this.formCreateIssue.value;
     newIssue.state = 'TODO';
     newIssue.fkUserIdDecode = this.allUser.find(u => u.id === newIssue.fkUserId).username;
-    newIssue.numberIssue = newIssue.numberIssue + 1;
     this.issuesService.createIssue(newIssue).subscribe(
       res => {
         this.messageService.add({severity:'success', summary: 'Info', detail: 'Issue creata con successo'});
