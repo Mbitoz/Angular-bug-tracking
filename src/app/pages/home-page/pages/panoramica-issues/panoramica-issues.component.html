@@ -1,11 +1,17 @@
-<div class="text-overview mb-5">
-  <span *ngIf="allIssues.length > 0">Scopri i dettagli dietro ogni dato! Clicca su una sezione del grafico per visualizzare una tabella con tutte le issue associate e per avere una comprensione ancora più approfondita.</span>
-  <span *ngIf="allIssues.length === 0">Complimenti! Sembra che lo sviluppo stia procedendo bene.</span>
-</div>
-<div class="chart-box">
-  <p-chart *ngIf="allIssues.length > 0" type="pie" [data]="data" [style]="{'width': '55%'}" (onDataSelect)="chartClick($event)"></p-chart>
-</div>
+<ng-template [ngIf]="loadingData" [ngIfElse]="defaultrender">
+  <app-shared-ngx-spinner [spinnerSize]="'medium'"></app-shared-ngx-spinner>
+</ng-template>
 
-<div #tableIssues *ngIf="dataTableIssues.length > 0" class="mt-5">
-  <app-search-issues-table [dataTableIssues]="dataTableIssues"></app-search-issues-table>
-</div>
+<ng-template #defaultrender>
+  <div class="text-overview mb-5">
+    <span *ngIf="allIssues.length > 0">Scopri i dettagli dietro ogni dato! Clicca su una sezione del grafico per visualizzare una tabella con tutte le issue associate e per avere una comprensione ancora più approfondita.</span>
+    <span *ngIf="allIssues.length === 0">Complimenti! Sembra che lo sviluppo stia procedendo bene.</span>
+  </div>
+  <div class="chart-box">
+    <p-chart *ngIf="allIssues.length > 0" type="pie" [data]="data" [style]="{'width': '55%'}" (onDataSelect)="chartClick($event)"></p-chart>
+  </div>
+  
+  <div #tableIssues *ngIf="dataTableIssues.length > 0" class="mt-5">
+    <app-search-issues-table [dataTableIssues]="dataTableIssues"></app-search-issues-table>
+  </div>
+</ng-template>

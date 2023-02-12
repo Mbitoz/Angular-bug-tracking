@@ -14,6 +14,7 @@ export class PanoramicaIssuesComponent implements OnInit {
   data: any;
   allIssues: Array<Issues> = [];
   dataTableIssues: Array<Issues> = [];
+  loadingData: boolean = false;
 
 
   constructor(
@@ -21,6 +22,7 @@ export class PanoramicaIssuesComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
+    this.loadingData = true;
     this.dataTableIssues = [];
     this.allIssues = await this.issuesService.getAllIssues().toPromise();
     if(this.allIssues.length > 0){
@@ -50,6 +52,7 @@ export class PanoramicaIssuesComponent implements OnInit {
         ]
       };
     }
+    this.loadingData = false;
   }
 
   chartClick(event) {

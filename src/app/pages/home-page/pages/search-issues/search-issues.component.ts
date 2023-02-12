@@ -23,10 +23,10 @@ export class SearchIssuesComponent implements OnInit {
 
   searchIssue(requestBody){
     this.loadingRicerca = true;
-    this.issuesService.searchIssue(requestBody).subscribe(
+    this.issuesService.getAllIssues().subscribe(
       resp => {
         setTimeout(() => {
-          this.dataTableIssues = resp;
+          this.dataTableIssues = this.searchData(resp, requestBody);
           this.loadingRicerca = false;
           setTimeout(() => {
             this.tableIssues.nativeElement.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -36,8 +36,12 @@ export class SearchIssuesComponent implements OnInit {
     );
   }
 
-  goToDetail(){
-
-  }
+  searchData(data, searchObj)  {
+    return data.filter(item => {
+      return Object.entries(searchObj).reduce((acc, [key, value]) => {
+        return acc && (value === null || item[key].toString().toLowerCase().includes(value.toString().toLowerCase()));
+      }, true);
+    });
+  };
 
 }

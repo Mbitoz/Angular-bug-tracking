@@ -17,8 +17,15 @@ export class SearchIssuesFormComponent implements OnInit {
 
   formSearchIssue: FormGroup;
   allUser: Array<Users> = [];
-  tipologicaTo: Array<Tipologica> = [];
-  tipologicaPriority: Array<Tipologica> = [];
+  tipologicaTo: Array<Tipologica> = [
+    { value: 'FE', description: 'FrontEnd' },
+    { value: 'BE', description: 'BackEnd' },
+  ];
+  tipologicaPriority: Array<Tipologica> = [
+    { value: '-1', description: 'Bassa' },
+    { value: '0', description: 'Media' },
+    { value: '1', description: 'Alta' },
+  ];
   loadingData: boolean = true;
 
   constructor(
@@ -28,17 +35,18 @@ export class SearchIssuesFormComponent implements OnInit {
 
   ngOnInit() {
     const $allUser = this.dataLogin.getUsers();
+    //Utile per Tipologiche gestite persistenti sul DB
     const $tipologicaOpenTo = this.tipologicaOpenTo.getTipologiaOpenTo();
     const $tipologicaPriority = this.tipologicaOpenTo.getTipologiaPriority();
     forkJoin([
       $allUser,
-      $tipologicaOpenTo,
-      $tipologicaPriority
+      //$tipologicaOpenTo,
+      //$tipologicaPriority
     ]).subscribe(
       result => {
         this.allUser = (result[0].filter( u => u.role != 'ADMIN'));
-        this.tipologicaTo = (result[1]);
-        this.tipologicaPriority = (result[2]);
+        // this.tipologicaTo = (result[1]);
+        // this.tipologicaPriority = (result[2]);
       },
       error => {
 

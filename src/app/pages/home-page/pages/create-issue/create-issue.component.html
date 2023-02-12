@@ -1,80 +1,87 @@
-<div class="card-wrapper card-space" *ngIf="!loadingData">
-  <div class="card card-bg dimensioneCard mt-3">
-    <div class="card-body">
-      <form [formGroup]="formCreateIssue" (submit)="creaNuovaIssue()">
-        <div class="row">
-          <div class="col-3">
-            <span id="title-form">Titolo</span>
-          </div>
-          <div class="col-3">
-            <span id="title-form">Apri per</span>
-          </div>
-          <div class="col-3">
-            <span id="title-form">Assegna a</span>
-          </div>
-          <div class="col-3">
-            <span id="title-form">Priorità</span>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-3">
-            <input type="text" pInputText formControlName="title">
-          </div>
-          <div class="col-3">
-            <p-dropdown [options]="tipologicaTo" formControlName="openTo" placeholder="Seleziona..." optionLabel="description" optionValue="value" [showClear]="true"></p-dropdown>
-          </div>
-          <div class="col-3">
-            <p-dropdown [options]="allUser" formControlName="fkUserId" placeholder="Seleziona..." optionLabel="username" optionValue="id" [showClear]="true"></p-dropdown>
-          </div>
-          <div class="col-3">
-            <p-dropdown [showClear]="true" formControlName="priority" name="priority" optionValue="value"
-            [options]="tipologicaPriority" appendTo="body" placeholder="Seleziona..."
-            emptyMessage="Nessun risultato trovato">
-            <ng-template let-item pTemplate="selectedItem">
-              <ng-container [ngSwitch]="item.value">
-                <div *ngSwitchCase="-1">
-                  <i class="pi pi-arrow-down iconPriority low"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
-                </div>
-                <div *ngSwitchCase="0">
-                  <i class="pi pi-arrows-v iconPriority medium"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
-                </div>
-                <div *ngSwitchCase="1">
-                  <i class="pi pi-arrow-up iconPriority high"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
-                </div>
-              </ng-container>
-            </ng-template>
+<ng-template [ngIf]="loadingData" [ngIfElse]="defaultrender">
+  <app-shared-ngx-spinner [spinnerSize]="'medium'"></app-shared-ngx-spinner>
+</ng-template>
 
-            <ng-template let-item pTemplate="item">
-              <ng-container [ngSwitch]="item.value">
-                <div *ngSwitchCase="-1">
-                  <i class="pi pi-arrow-down iconPriority low"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
-                </div>
-                <div *ngSwitchCase="0">
-                  <i class="pi pi-arrows-v iconPriority medium"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
-                </div>
-                <div *ngSwitchCase="1">
-                  <i class="pi pi-arrow-up iconPriority high"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
-                </div>
-              </ng-container>
-            </ng-template>
-          </p-dropdown>
+<ng-template #defaultrender>
+  <div class="card-wrapper card-space">
+    <div class="card card-bg dimensioneCard mt-3">
+      <div class="card-body">
+        <form [formGroup]="formCreateIssue" (submit)="creaNuovaIssue()">
+          <div class="row">
+            <div class="col-3">
+              <span id="title-form">Titolo</span>
+            </div>
+            <div class="col-3">
+              <span id="title-form">Apri per</span>
+            </div>
+            <div class="col-3">
+              <span id="title-form">Assegna a</span>
+            </div>
+            <div class="col-3">
+              <span id="title-form">Priorità</span>
+            </div>
           </div>
-        </div>
-        <div class="row mt-2">
-          <div class="col-12">
-            <span id="title-form">Descrizione</span>
+          <div class="row">
+            <div class="col-3">
+              <input type="text" pInputText formControlName="title">
+            </div>
+            <div class="col-3">
+              <p-dropdown [options]="tipologicaTo" formControlName="openTo" placeholder="Seleziona..." optionLabel="description" optionValue="value" [showClear]="true"></p-dropdown>
+            </div>
+            <div class="col-3">
+              <p-dropdown [options]="allUser" formControlName="fkUserId" placeholder="Seleziona..." optionLabel="username" optionValue="id" [showClear]="true"></p-dropdown>
+            </div>
+            <div class="col-3">
+              <p-dropdown [showClear]="true" formControlName="priority" name="priority" optionValue="value"
+              [options]="tipologicaPriority" appendTo="body" placeholder="Seleziona..."
+              emptyMessage="Nessun risultato trovato">
+              <ng-template let-item pTemplate="selectedItem">
+                <ng-container [ngSwitch]="item.value">
+                  <div *ngSwitchCase="-1">
+                    <i class="pi pi-arrow-down iconPriority low"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
+                  </div>
+                  <div *ngSwitchCase="0">
+                    <i class="pi pi-arrows-v iconPriority medium"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
+                  </div>
+                  <div *ngSwitchCase="1">
+                    <i class="pi pi-arrow-up iconPriority high"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
+                  </div>
+                </ng-container>
+              </ng-template>
+  
+              <ng-template let-item pTemplate="item">
+                <ng-container [ngSwitch]="item.value">
+                  <div *ngSwitchCase="-1">
+                    <i class="pi pi-arrow-down iconPriority low"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
+                  </div>
+                  <div *ngSwitchCase="0">
+                    <i class="pi pi-arrows-v iconPriority medium"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
+                  </div>
+                  <div *ngSwitchCase="1">
+                    <i class="pi pi-arrow-up iconPriority high"></i><span style="margin-left: 10px; padding: 1%;">{{ item.description }}</span>
+                  </div>
+                </ng-container>
+              </ng-template>
+            </p-dropdown>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <textarea rows="5" cols="30" pInputTextarea formControlName="description"></textarea>
+          <div class="row mt-2">
+            <div class="col-12">
+              <span id="title-form">Descrizione</span>
+            </div>
           </div>
-        </div>
-        <div class="text-center mt-5">
-          <button pButton pRipple type="reset" label="Pulisci campi" class="p-button-outlined p-button-warning" icon="pi pi-trash" iconPos="right"></button>
-          <button [disabled]="formCreateIssue.invalid" pButton pRipple type="submit" label="Crea" class="p-button-raised ml-1" icon="pi pi-check" iconPos="right"></button>
-        </div>
-      </form>
+          <div class="row">
+            <div class="col-12">
+              <textarea rows="5" cols="30" pInputTextarea formControlName="description"></textarea>
+            </div>
+          </div>
+          <div class="text-center mt-5">
+            <button pButton pRipple type="reset" label="Pulisci campi" class="p-button-outlined p-button-warning" icon="pi pi-trash" iconPos="right"></button>
+            <button [disabled]="formCreateIssue.invalid" pButton pRipple type="submit" label="Crea" class="p-button-raised ml-1" icon="pi pi-check" iconPos="right"></button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-</div>
+</ng-template>
+<ngx-spinner *ngIf="persistanceLoading" bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Caricamento... </p></ngx-spinner>

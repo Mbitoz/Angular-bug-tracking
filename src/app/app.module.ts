@@ -25,6 +25,7 @@ import { SearchIssuesTableComponent } from './pages/home-page/pages/search-issue
 import { PanoramicaIssuesComponent } from './pages/home-page/pages/panoramica-issues/panoramica-issues.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DetailIssueComponent } from './pages/home-page/pages/detail-issue/detail-issue.component';
+import { SharedNgxSpinnerComponent } from './shared/components/shared-ngx-spinner/shared-ngx-spinner.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { DetailIssueComponent } from './pages/home-page/pages/detail-issue/detai
     SearchIssuesTableComponent,
     PanoramicaIssuesComponent,
     DashboardComponent,
-    DetailIssueComponent
+    DetailIssueComponent,
+    SharedNgxSpinnerComponent
   ],
   imports: [
     BrowserModule,

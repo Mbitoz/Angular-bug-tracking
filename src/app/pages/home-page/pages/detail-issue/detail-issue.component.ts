@@ -21,8 +21,15 @@ export class DetailIssueComponent implements OnInit {
 
   formDetailIssue: FormGroup;
   allUser: Array<Users> = [];
-  tipologicaTo: Array<Tipologica> = [];
-  tipologicaPriority: Array<Tipologica> = [];
+  tipologicaTo: Array<Tipologica> = [
+    { value: 'FE', description: 'FrontEnd' },
+    { value: 'BE', description: 'BackEnd' },
+  ];
+  tipologicaPriority: Array<Tipologica> = [
+    { value: '-1', description: 'Bassa' },
+    { value: '0', description: 'Media' },
+    { value: '1', description: 'Alta' },
+  ];
   detailIssue: Issues;
   loadingData: boolean = true;
   issueId: number;
@@ -34,6 +41,7 @@ export class DetailIssueComponent implements OnInit {
     {label: 'Done', value: 'DONE'}, 
     {label: 'Deliverable', value: 'DELIVERABLE'}
   ];
+  persistanceLoading: boolean = false;
 
 
   constructor(
@@ -64,25 +72,28 @@ export class DetailIssueComponent implements OnInit {
 
   ngOnInit() {
     const $allUser = this.dataLogin.getUsers();
+    const $getIssue = this.issuesService.getIssueById(this.issueId);
+    //Utile per Tipologiche gestite persistenti sul DB
     const $tipologicaOpenTo = this.tipologicaOpenTo.getTipologiaOpenTo();
     const $tipologicaPriority = this.tipologicaOpenTo.getTipologiaPriority();
-    const $getIssue = this.issuesService.getIssueById(this.issueId);
+    
     forkJoin([
       $allUser,
-      $tipologicaOpenTo,
-      $tipologicaPriority,
-      $getIssue
+      $getIssue,
+      //$tipologicaOpenTo,
+      //$tipologicaPriority,
+      
     ]).subscribe(
       result => {
         this.allUser = (result[0].filter( u => u.role != 'ADMIN'));
-        this.tipologicaTo = (result[1]);
-        this.tipologicaPriority = (result[2]);
-        if(result[3] && result[3].length > 0){
-          const issueArrayTemp = (result[3]);
+        if(result[1] && result[1].length > 0){
+          const issueArrayTemp = (result[1]);
           this.detailIssue = issueArrayTemp[0];
         } else {
           this.location.back();
         }
+        // this.tipologicaTo = (result[2]);
+        // this.tipologicaPriority = (result[3]);
       },
       error => {
 
@@ -126,12 +137,14 @@ export class DetailIssueComponent implements OnInit {
   }
 
   modifyIssue(){
+    this.persistanceLoading = true;
     const issue = this.formDetailIssue.value;
     issue._id = this.detailIssue._id;
     issue.fkUserIdDecode = this.allUser.find(u => u.id === issue.fkUserId).username;
     this.issuesService.modifyIssue(this.formDetailIssue.value).subscribe(
       res => {
         this.messageService.add({severity:'success', summary: 'Info', detail: 'Issue modificata con successo'});
+        this.persistanceLoading = false;
         this.location.back();
       }
     );

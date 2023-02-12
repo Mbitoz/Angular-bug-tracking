@@ -1,254 +1,262 @@
-<div class="container-check mb-4" *ngIf="loggedUser.role === 'USER'">
-  <div class="field-checkbox">
-    <p-checkbox class="mb-1" [(ngModel)]="checked" [binary]="true" inputId="binary" (onChange)="filterIssue($event)"></p-checkbox>
-    <label for="binary" style="margin-left: 10px; cursor: pointer;">Only my issue</label>
-  </div>
-</div>
+<ng-template [ngIf]="loadingData" [ngIfElse]="defaultrender">
+  <app-shared-ngx-spinner [spinnerSize]="'medium'"></app-shared-ngx-spinner>
+</ng-template>
 
-<div class="container-issues">
-  <div class="child-div" style="margin-right: 2%;" pDroppable="issue" (onDrop)="dropToDo()">
-    <div class="text-center">
-      <b class="state-issue">TODO</b>
+<ng-template #defaultrender>
+  <div class="container-check mb-4" *ngIf="loggedUser.role === 'USER'">
+    <div class="field-checkbox">
+      <p-checkbox class="mb-1" [(ngModel)]="checked" [binary]="true" inputId="binary" (onChange)="filterIssue($event)"></p-checkbox>
+      <label for="binary" style="margin-left: 10px; cursor: pointer;">Only my issue</label>
     </div>
-
-    <ng-template [ngIf]="issuesToDo && issuesToDo.length > 0" [ngIfElse]="noIssuesTodo">
-      <div *ngFor="let issue of issuesToDo" class="p-3">
-        <p-card pDraggable="issue" (onDragStart)="dragStart(issue)" (onDragEnd)="dragEnd()">
-          <ng-template pTemplate="header">
-            <div class="text-center labelId">
-              Issues n° {{ issue.numberIssue }}
-            </div>
-            <p-divider></p-divider>
-          </ng-template>
-          <div class="row pl-3 pr-3">
-            <div class="col-12">
-              <span class="label-card">Titolo: </span><span>{{ issue.title }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Descrizione: </span><span>{{ issue.description }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Assegnato a: </span><span>{{ issue.fkUserIdDecode }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd'
-                }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Priorità: </span>
-              <ng-container [ngSwitch]="issue.priority">
-                <span *ngSwitchCase="-1">
-                  <i class="pi pi-arrow-down iconPriority low" pTooltip="Bassa"></i>
-                </span>
-                <span *ngSwitchCase="0">
-                  <i class="pi pi-arrows-v iconPriority medium" pTooltip="Media"></i>
-                </span>
-                <span *ngSwitchCase="1">
-                  <i class="pi pi-arrow-up iconPriority high" pTooltip="Alta"></i>
-                </span>
-              </ng-container>
-            </div>
-          </div>
-          <ng-template pTemplate="footer">
-            <p-divider></p-divider>
-            <div class="text-center">
-              <button pButton pRipple type="button" label="Dettaglio" style="height: 38px; width: 145px;color: #3E4E50;"
-                class="p-button-outlined p-button-rounded p-button-secondary" icon="pi pi-angle-right"
-                iconPos="right" (click)="goToDetail(issue._id)"></button>
-            </div>
-          </ng-template>
-        </p-card>
-      </div>
-    </ng-template>
-
-    <ng-template #noIssuesTodo>
-      <div class="no-issue">
-        Nessuna Issue in ToDo
-      </div>
-    </ng-template>
-
   </div>
-  <div class="child-div" style="margin-right: 2%;" pDroppable="issue" (onDrop)="dropInProgress()">
-    <div class="text-center">
-      <b class="state-issue">IN PROGRESS</b>
+  
+  <div class="container-issues">
+    <div class="child-div" style="margin-right: 2%;" pDroppable="issue" (onDrop)="dropToDo()">
+      <div class="text-center">
+        <b class="state-issue">TODO</b>
+      </div>
+  
+      <ng-template [ngIf]="issuesToDo && issuesToDo.length > 0" [ngIfElse]="noIssuesTodo">
+        <div *ngFor="let issue of issuesToDo" class="p-3">
+          <p-card pDraggable="issue" (onDragStart)="dragStart(issue)" (onDragEnd)="dragEnd()">
+            <ng-template pTemplate="header">
+              <div class="text-center labelId">
+                Issues n° {{ issue.numberIssue }}
+              </div>
+              <p-divider></p-divider>
+            </ng-template>
+            <div class="row pl-3 pr-3">
+              <div class="col-12">
+                <span class="label-card">Titolo: </span><span>{{ issue.title }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Descrizione: </span><span>{{ issue.description }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Assegnato a: </span><span>{{ issue.fkUserIdDecode }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd'
+                  }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Priorità: </span>
+                <ng-container [ngSwitch]="issue.priority">
+                  <span *ngSwitchCase="-1">
+                    <i class="pi pi-arrow-down iconPriority low" pTooltip="Bassa"></i>
+                  </span>
+                  <span *ngSwitchCase="0">
+                    <i class="pi pi-arrows-v iconPriority medium" pTooltip="Media"></i>
+                  </span>
+                  <span *ngSwitchCase="1">
+                    <i class="pi pi-arrow-up iconPriority high" pTooltip="Alta"></i>
+                  </span>
+                </ng-container>
+              </div>
+            </div>
+            <ng-template pTemplate="footer">
+              <p-divider></p-divider>
+              <div class="text-center">
+                <button pButton pRipple type="button" label="Dettaglio" style="height: 38px; width: 145px;color: #3E4E50;"
+                  class="p-button-outlined p-button-rounded p-button-secondary" icon="pi pi-angle-right"
+                  iconPos="right" (click)="goToDetail(issue.numberIssue)"></button>
+              </div>
+            </ng-template>
+          </p-card>
+        </div>
+      </ng-template>
+  
+      <ng-template #noIssuesTodo>
+        <div class="no-issue">
+          Nessuna Issue in ToDo
+        </div>
+      </ng-template>
+  
     </div>
-    <ng-template [ngIf]="issuesInProgress && issuesInProgress.length > 0" [ngIfElse]="noIssuesInProgress">
-      <div *ngFor="let issue of issuesInProgress" class="p-3">
-        <p-card pDraggable="issue" (onDragStart)="dragStart(issue)" (onDragEnd)="dragEnd()">
-          <ng-template pTemplate="header">
-            <div class="text-center labelId">
-              Issues n° {{ issue.numberIssue }}
-            </div>
-            <p-divider></p-divider>
-          </ng-template>
-          <div class="row pl-3 pr-3">
-            <div class="col-12">
-              <span class="label-card">Titolo: </span><span>{{ issue.title }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Descrizione: </span><span>{{ issue.description }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Assegnato a: </span><span>{{ issue.fkUserIdDecode }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd'
-                }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Priorità: </span>
-              <ng-container [ngSwitch]="issue.priority">
-                <span *ngSwitchCase="-1">
-                  <i class="pi pi-arrow-down iconPriority low" pTooltip="Bassa"></i>
-                </span>
-                <span *ngSwitchCase="0">
-                  <i class="pi pi-arrows-v iconPriority medium" pTooltip="Media"></i>
-                </span>
-                <span *ngSwitchCase="1">
-                  <i class="pi pi-arrow-up iconPriority high" pTooltip="Alta"></i>
-                </span>
-              </ng-container>
-            </div>
-          </div>
-          <ng-template pTemplate="footer">
-            <p-divider></p-divider>
-            <div class="text-center">
-              <button pButton pRipple type="button" label="Dettaglio" style="height: 38px; width: 145px;color: #3E4E50;"
-                class="p-button-outlined p-button-rounded p-button-secondary" icon="pi pi-angle-right"
-                iconPos="right" (click)="goToDetail(issue._id)"></button>
-            </div>
-          </ng-template>
-        </p-card>
+    <div class="child-div" style="margin-right: 2%;" pDroppable="issue" (onDrop)="dropInProgress()">
+      <div class="text-center">
+        <b class="state-issue">IN PROGRESS</b>
       </div>
-    </ng-template>
-    <ng-template #noIssuesInProgress>
-      <div class="no-issue">
-        Nessuna Issue In Progress
-      </div>
-    </ng-template>
-  </div>
-
-  <div class="child-div" style="margin-right: 2%;" pDroppable="issue" (onDrop)="dropDone()">
-    <div class="text-center">
-      <b class="state-issue">DONE</b>
+      <ng-template [ngIf]="issuesInProgress && issuesInProgress.length > 0" [ngIfElse]="noIssuesInProgress">
+        <div *ngFor="let issue of issuesInProgress" class="p-3">
+          <p-card pDraggable="issue" (onDragStart)="dragStart(issue)" (onDragEnd)="dragEnd()">
+            <ng-template pTemplate="header">
+              <div class="text-center labelId">
+                Issues n° {{ issue.numberIssue }}
+              </div>
+              <p-divider></p-divider>
+            </ng-template>
+            <div class="row pl-3 pr-3">
+              <div class="col-12">
+                <span class="label-card">Titolo: </span><span>{{ issue.title }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Descrizione: </span><span>{{ issue.description }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Assegnato a: </span><span>{{ issue.fkUserIdDecode }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd'
+                  }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Priorità: </span>
+                <ng-container [ngSwitch]="issue.priority">
+                  <span *ngSwitchCase="-1">
+                    <i class="pi pi-arrow-down iconPriority low" pTooltip="Bassa"></i>
+                  </span>
+                  <span *ngSwitchCase="0">
+                    <i class="pi pi-arrows-v iconPriority medium" pTooltip="Media"></i>
+                  </span>
+                  <span *ngSwitchCase="1">
+                    <i class="pi pi-arrow-up iconPriority high" pTooltip="Alta"></i>
+                  </span>
+                </ng-container>
+              </div>
+            </div>
+            <ng-template pTemplate="footer">
+              <p-divider></p-divider>
+              <div class="text-center">
+                <button pButton pRipple type="button" label="Dettaglio" style="height: 38px; width: 145px;color: #3E4E50;"
+                  class="p-button-outlined p-button-rounded p-button-secondary" icon="pi pi-angle-right"
+                  iconPos="right" (click)="goToDetail(issue.numberIssue)"></button>
+              </div>
+            </ng-template>
+          </p-card>
+        </div>
+      </ng-template>
+      <ng-template #noIssuesInProgress>
+        <div class="no-issue">
+          Nessuna Issue In Progress
+        </div>
+      </ng-template>
     </div>
-    <ng-template [ngIf]="issuesDone && issuesDone.length > 0" [ngIfElse]="noIssuesInDone">
-      <div *ngFor="let issue of issuesDone" class="p-3">
-        <p-card pDraggable="issue" (onDragStart)="dragStart(issue)" (onDragEnd)="dragEnd()">
-          <ng-template pTemplate="header">
-            <div class="text-center labelId">
-              Issues n° {{ issue.numberIssue }}
-            </div>
-            <p-divider></p-divider>
-          </ng-template>
-          <div class="row pl-3 pr-3">
-            <div class="col-12">
-              <span class="label-card">Titolo: </span><span>{{ issue.title }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Descrizione: </span><span>{{ issue.description }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Assegnato a: </span><span>{{ issue.fkUserIdDecode }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd'
-                }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Priorità: </span>
-              <ng-container [ngSwitch]="issue.priority">
-                <span *ngSwitchCase="-1">
-                  <i class="pi pi-arrow-down iconPriority low" pTooltip="Bassa"></i>
-                </span>
-                <span *ngSwitchCase="0">
-                  <i class="pi pi-arrows-v iconPriority medium" pTooltip="Media"></i>
-                </span>
-                <span *ngSwitchCase="1">
-                  <i class="pi pi-arrow-up iconPriority high" pTooltip="Alta"></i>
-                </span>
-              </ng-container>
-            </div>
-          </div>
-          <ng-template pTemplate="footer">
-            <p-divider></p-divider>
-            <div class="text-center">
-              <button pButton pRipple type="button" label="Dettaglio" style="height: 38px; width: 145px; color: #3E4E50;"
-                class="p-button-outlined p-button-rounded p-button-secondary" icon="pi pi-angle-right"
-                iconPos="right" (click)="goToDetail(issue._id)"></button>
-            </div>
-          </ng-template>
-        </p-card>
+  
+    <div class="child-div" style="margin-right: 2%;" pDroppable="issue" (onDrop)="dropDone()">
+      <div class="text-center">
+        <b class="state-issue">DONE</b>
       </div>
-    </ng-template>
-    <ng-template #noIssuesInDone>
-      <div class="no-issue">
-        Nessuna Issue in Done
-      </div>
-    </ng-template>
-  </div>
-
-  <div class="child-div" pDroppable="issue" (onDrop)="dropDeliverable()"
-    [pDroppableDisabled]="loggedUser.role === 'USER' ? true : false">
-    <div class="text-center">
-      <b class="state-issue">DELIVERABLE</b>
+      <ng-template [ngIf]="issuesDone && issuesDone.length > 0" [ngIfElse]="noIssuesInDone">
+        <div *ngFor="let issue of issuesDone" class="p-3">
+          <p-card pDraggable="issue" (onDragStart)="dragStart(issue)" (onDragEnd)="dragEnd()">
+            <ng-template pTemplate="header">
+              <div class="text-center labelId">
+                Issues n° {{ issue.numberIssue }}
+              </div>
+              <p-divider></p-divider>
+            </ng-template>
+            <div class="row pl-3 pr-3">
+              <div class="col-12">
+                <span class="label-card">Titolo: </span><span>{{ issue.title }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Descrizione: </span><span>{{ issue.description }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Assegnato a: </span><span>{{ issue.fkUserIdDecode }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd'
+                  }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Priorità: </span>
+                <ng-container [ngSwitch]="issue.priority">
+                  <span *ngSwitchCase="-1">
+                    <i class="pi pi-arrow-down iconPriority low" pTooltip="Bassa"></i>
+                  </span>
+                  <span *ngSwitchCase="0">
+                    <i class="pi pi-arrows-v iconPriority medium" pTooltip="Media"></i>
+                  </span>
+                  <span *ngSwitchCase="1">
+                    <i class="pi pi-arrow-up iconPriority high" pTooltip="Alta"></i>
+                  </span>
+                </ng-container>
+              </div>
+            </div>
+            <ng-template pTemplate="footer">
+              <p-divider></p-divider>
+              <div class="text-center">
+                <button pButton pRipple type="button" label="Dettaglio" style="height: 38px; width: 145px; color: #3E4E50;"
+                  class="p-button-outlined p-button-rounded p-button-secondary" icon="pi pi-angle-right"
+                  iconPos="right" (click)="goToDetail(issue.numberIssue)"></button>
+              </div>
+            </ng-template>
+          </p-card>
+        </div>
+      </ng-template>
+      <ng-template #noIssuesInDone>
+        <div class="no-issue">
+          Nessuna Issue in Done
+        </div>
+      </ng-template>
     </div>
-    <ng-template [ngIf]="issuesDeliverable && issuesDeliverable.length > 0" [ngIfElse]="noIssuesInDeliverable">
-      <div *ngFor="let issue of issuesDeliverable" class="p-3">
-        <p-card tooltipPosition="top"
-          [pTooltip]="loggedUser.role === 'USER' ? 'Non hai i permessi per modificare le issues in stato Deliverable' : ''"
-          pDraggable="issue" (onDragStart)="dragStart(issue)" (onDragEnd)="dragEnd()"
-          [pDraggableDisabled]="loggedUser.role === 'USER' ? true : false">
-          <ng-template pTemplate="header">
-            <div class="text-center labelId">
-              Issues n° {{ issue.numberIssue }}
-            </div>
-            <p-divider></p-divider>
-          </ng-template>
-          <div class="row pl-3 pr-3">
-            <div class="col-12">
-              <span class="label-card">Titolo: </span><span>{{ issue.title }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Descrizione: </span><span>{{ issue.description }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Assegnato a: </span><span>{{ issue.fkUserIdDecode }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd'
-                }}</span>
-            </div>
-            <div class="col-12">
-              <span class="label-card">Priorità: </span>
-              <ng-container [ngSwitch]="issue.priority">
-                <span *ngSwitchCase="-1">
-                  <i class="pi pi-arrow-down iconPriority low" pTooltip="Bassa"></i>
-                </span>
-                <span *ngSwitchCase="0">
-                  <i class="pi pi-arrows-v iconPriority medium" pTooltip="Media"></i>
-                </span>
-                <span *ngSwitchCase="1">
-                  <i class="pi pi-arrow-up iconPriority high" pTooltip="Alta"></i>
-                </span>
-              </ng-container>
-            </div>
-          </div>
-          <ng-template pTemplate="footer">
-            <p-divider></p-divider>
-            <div class="text-center">
-              <button pButton pRipple type="button" label="Dettaglio" style="height: 38px; width: 145px; color: #3E4E50;"
-                class="p-button-outlined p-button-rounded p-button-secondary" icon="pi pi-angle-right"
-                iconPos="right" (click)="goToDetail(issue._id)"></button>
-            </div>
-          </ng-template>
-        </p-card>
+  
+    <div class="child-div" pDroppable="issue" (onDrop)="dropDeliverable()"
+      [pDroppableDisabled]="loggedUser.role === 'USER' ? true : false">
+      <div class="text-center">
+        <b class="state-issue">DELIVERABLE</b>
       </div>
-    </ng-template>
-    <ng-template #noIssuesInDeliverable>
-      <div class="no-issue">
-        Nessuna Issue in Deliverable
-      </div>
-    </ng-template>
+      <ng-template [ngIf]="issuesDeliverable && issuesDeliverable.length > 0" [ngIfElse]="noIssuesInDeliverable">
+        <div *ngFor="let issue of issuesDeliverable" class="p-3">
+          <p-card tooltipPosition="top"
+            [pTooltip]="loggedUser.role === 'USER' ? 'Non hai i permessi per modificare le issues in stato Deliverable' : ''"
+            pDraggable="issue" (onDragStart)="dragStart(issue)" (onDragEnd)="dragEnd()"
+            [pDraggableDisabled]="loggedUser.role === 'USER' ? true : false">
+            <ng-template pTemplate="header">
+              <div class="text-center labelId">
+                Issues n° {{ issue.numberIssue }}
+              </div>
+              <p-divider></p-divider>
+            </ng-template>
+            <div class="row pl-3 pr-3">
+              <div class="col-12">
+                <span class="label-card">Titolo: </span><span>{{ issue.title }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Descrizione: </span><span>{{ issue.description }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Assegnato a: </span><span>{{ issue.fkUserIdDecode }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Aperto per: </span><span>{{ issue.openTo === 'FE' ? 'FrontEnd' : 'BackEnd'
+                  }}</span>
+              </div>
+              <div class="col-12">
+                <span class="label-card">Priorità: </span>
+                <ng-container [ngSwitch]="issue.priority">
+                  <span *ngSwitchCase="-1">
+                    <i class="pi pi-arrow-down iconPriority low" pTooltip="Bassa"></i>
+                  </span>
+                  <span *ngSwitchCase="0">
+                    <i class="pi pi-arrows-v iconPriority medium" pTooltip="Media"></i>
+                  </span>
+                  <span *ngSwitchCase="1">
+                    <i class="pi pi-arrow-up iconPriority high" pTooltip="Alta"></i>
+                  </span>
+                </ng-container>
+              </div>
+            </div>
+            <ng-template pTemplate="footer">
+              <p-divider></p-divider>
+              <div class="text-center">
+                <button pButton pRipple type="button" label="Dettaglio" style="height: 38px; width: 145px; color: #3E4E50;"
+                  class="p-button-outlined p-button-rounded p-button-secondary" icon="pi pi-angle-right"
+                  iconPos="right" (click)="goToDetail(issue.numberIssue)"></button>
+              </div>
+            </ng-template>
+          </p-card>
+        </div>
+      </ng-template>
+      <ng-template #noIssuesInDeliverable>
+        <div class="no-issue">
+          Nessuna Issue in Deliverable
+        </div>
+      </ng-template>
+    </div>
   </div>
-</div>
+</ng-template>
+
+<ngx-spinner *ngIf="persistanceLoading" bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Caricamento... </p></ngx-spinner>

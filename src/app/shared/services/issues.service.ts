@@ -48,8 +48,8 @@ export class IssuesService {
   }
 
   searchIssue(issue: Issues): Observable<any> {
-    /*
-    Utilizzando JSON-server
+    
+    //Utilizzando JSON-server
     const params = {
       title_like: issue.title,
       openTo: issue.openTo,
@@ -59,26 +59,10 @@ export class IssuesService {
       state: issue.state
     };
     const queryParameter = omitBy(params, isNil);
-    return this.http.get<Array<Issues>>(`https://localhost:3000/issues`,{
+    return this.http.get(`https://localhost:3000/issues`, {
       params: queryParameter
-    };
-    */
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('cache-control', 'no-cache');
-    headers = headers.append('x-apikey', '147aafd40ac94c56545d2806b085dbe4f5c5d');
-
-    const q = {
-      "title": {"$regex" : issue.title}, 
-      "openTo": {"$regex" : issue.openTo},
-      "fkUserId": {"$regex" : issue.fkUserId}, 
-      "priority": {"$regex" : issue.priority},
-      "description": {"$regex" : issue.description}, 
-      "state": {"$regex" : issue.state},
-    }
-    const url = `https://appbt-fe36.restdb.io/rest/issues?q=${q}`;
-    return this.http.get(url, {
-      headers: headers
     });
+    
   }
 
   getIssueById(id: number): Observable<any> {
@@ -99,9 +83,9 @@ export class IssuesService {
     headers = headers.append('x-apikey', '147aafd40ac94c56545d2806b085dbe4f5c5d');
 
     const q = {
-      "title": {id}
+      "_id": {id}
     }
-    const url = `https://appbt-fe36.restdb.io/rest/issues?q=${q}`;
+    const url = `https://appbt-fe36.restdb.io/rest/issues?q={"numberIssue": ${id}}`;
     return this.http.get(url, {
       headers: headers
     });

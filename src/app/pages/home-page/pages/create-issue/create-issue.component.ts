@@ -18,9 +18,17 @@ export class CreateIssueComponent implements OnInit {
 
   formCreateIssue: FormGroup;
   allUser: Array<Users> = [];
-  tipologicaTo: Array<Tipologica> = [];
-  tipologicaPriority: Array<Tipologica> = [];
+  tipologicaTo: Array<Tipologica> = [
+    { value: 'FE', description: 'FrontEnd' },
+    { value: 'BE', description: 'BackEnd' },
+  ];
+  tipologicaPriority: Array<Tipologica> = [
+    { value: '-1', description: 'Bassa' },
+    { value: '0', description: 'Media' },
+    { value: '1', description: 'Alta' },
+  ];
   loadingData: boolean = true;
+  persistanceLoading: boolean = false;
 
   constructor(
     private dataLogin: DataLoginService,
@@ -31,17 +39,18 @@ export class CreateIssueComponent implements OnInit {
 
   ngOnInit() {
     const $allUser = this.dataLogin.getUsers();
+    //Utile per Tipologiche gestite persistenti sul DB
     const $tipologicaOpenTo = this.tipologicaOpenTo.getTipologiaOpenTo();
     const $tipologicaPriority = this.tipologicaOpenTo.getTipologiaPriority();
     forkJoin([
       $allUser,
-      $tipologicaOpenTo,
-      $tipologicaPriority
+      //$tipologicaOpenTo,
+      //$tipologicaPriority
     ]).subscribe(
       result => {
         this.allUser = (result[0].filter( u => u.role != 'ADMIN'));
-        this.tipologicaTo = (result[1]);
-        this.tipologicaPriority = (result[2]);
+        // this.tipologicaTo = (result[1]);
+        // this.tipologicaPriority = (result[2]);
       },
       error => {
 
@@ -68,13 +77,16 @@ export class CreateIssueComponent implements OnInit {
     // const allIssue = await this.issuesService.getAllIssues().toPromise();
     // let maxId = allIssue.length === 0 ? 0 : Math.max(...allIssue.map(element => element.id))
     // newIssue.id = maxId + 1;
+    this.persistanceLoading = true;
     const newIssue: Issues = this.formCreateIssue.value;
     newIssue.state = 'TODO';
     newIssue.fkUserIdDecode = this.allUser.find(u => u.id === newIssue.fkUserId).username;
+    newIssue.numberIssue = newIssue.numberIssue + 1;
     this.issuesService.createIssue(newIssue).subscribe(
       res => {
         this.messageService.add({severity:'success', summary: 'Info', detail: 'Issue creata con successo'});
         this.formCreateIssue.reset();
+        this.persistanceLoading = false;
       }
     );
   }

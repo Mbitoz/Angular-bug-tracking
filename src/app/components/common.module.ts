@@ -28,6 +28,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ChartModule } from 'primeng/chart';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 registerLocaleData(localeIt, 'it');
@@ -62,7 +63,8 @@ registerLocaleData(localeIt, 'it');
         ProgressBarModule,
         CheckboxModule,
         ChartModule,
-        SelectButtonModule
+        SelectButtonModule,
+        NgxSpinnerModule
     ],
     exports: [
         ButtonModule,
@@ -92,7 +94,8 @@ registerLocaleData(localeIt, 'it');
         ProgressBarModule,
         CheckboxModule,
         ChartModule,
-        SelectButtonModule
+        SelectButtonModule,
+        NgxSpinnerModule
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'it-IT' }

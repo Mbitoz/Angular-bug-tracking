@@ -19,6 +19,8 @@ export class AllIssuesComponent implements OnInit {
   draggedIssue: Issues;
   loggedUser: Users;
   checked: boolean = false;
+  loadingData: boolean = false;
+  persistanceLoading: boolean = false;
 
   constructor(
     private issuesService: IssuesService,
@@ -41,6 +43,7 @@ export class AllIssuesComponent implements OnInit {
 
   async dropToDo() {
     if (this.draggedIssue && this.draggedIssue.state != 'TODO') {
+      this.persistanceLoading = true;
       this.draggedIssue.state = 'TODO';
       this.issuesToDo = [...this.issuesToDo, this.draggedIssue];
       this.issuesInProgress = this.issuesInProgress.filter(i => i._id != this.draggedIssue._id);
@@ -48,11 +51,13 @@ export class AllIssuesComponent implements OnInit {
       this.issuesDeliverable = this.issuesDeliverable.filter(i => i._id != this.draggedIssue._id);
       await this.issuesService.modifyIssue(this.draggedIssue).toPromise();
       this.draggedIssue = null;
+      this.persistanceLoading = false;
     }
   }
 
   async dropInProgress() {
     if (this.draggedIssue && this.draggedIssue.state != 'IN_PROGRESS') {
+      this.persistanceLoading = true;
       this.draggedIssue.state = 'IN_PROGRESS';
       this.issuesInProgress = [...this.issuesInProgress, this.draggedIssue];
       this.issuesToDo = this.issuesToDo.filter(i => i._id != this.draggedIssue._id);
@@ -60,11 +65,13 @@ export class AllIssuesComponent implements OnInit {
       this.issuesDeliverable = this.issuesDeliverable.filter(i => i._id != this.draggedIssue._id);
       await this.issuesService.modifyIssue(this.draggedIssue).toPromise();
       this.draggedIssue = null;
+      this.persistanceLoading = false;
     }
   }
 
   async dropDone() {
     if (this.draggedIssue && this.draggedIssue.state != 'DONE') {
+      this.persistanceLoading = true;
       this.draggedIssue.state = 'DONE';
       this.issuesDone = [...this.issuesDone, this.draggedIssue];
       this.issuesToDo = this.issuesToDo.filter(i => i._id != this.draggedIssue._id);
@@ -72,11 +79,13 @@ export class AllIssuesComponent implements OnInit {
       this.issuesDeliverable = this.issuesDeliverable.filter(i => i._id != this.draggedIssue._id);
       await this.issuesService.modifyIssue(this.draggedIssue).toPromise();
       this.draggedIssue = null;
+      this.persistanceLoading = false;
     }
   }
 
   async dropDeliverable() {
     if (this.draggedIssue && this.draggedIssue.state != 'DELIVERABLE') {
+      this.persistanceLoading = true;
       this.draggedIssue.state = 'DELIVERABLE';
       this.issuesDeliverable = [...this.issuesDeliverable, this.draggedIssue];
       this.issuesToDo = this.issuesToDo.filter(i => i._id != this.draggedIssue._id);
@@ -84,10 +93,12 @@ export class AllIssuesComponent implements OnInit {
       this.issuesDone = this.issuesDone.filter(i => i._id != this.draggedIssue._id);
       await this.issuesService.modifyIssue(this.draggedIssue).toPromise();
       this.draggedIssue = null;
+      this.persistanceLoading = false;
     }
   }
 
   async getIssues(filter: boolean){
+    this.loadingData = true;
     this.issuesService.getAllIssues().subscribe(
       resp => {
         this.allIssues = filter ? resp.filter(i => i.fkUserId === this.loggedUser.id) : resp;
@@ -95,6 +106,8 @@ export class AllIssuesComponent implements OnInit {
         this.issuesInProgress = this.allIssues.filter(i => i.state === 'IN_PROGRESS');
         this.issuesDone = this.allIssues.filter(i => i.state === 'DONE');
         this.issuesDeliverable = this.allIssues.filter(i => i.state === 'DELIVERABLE');
+        this.loadingData = false;
+        this.persistanceLoading = false;
       }
     );
   }
