@@ -1,15 +1,26 @@
-<div class="card-wrapper card-space">
-  <div class="card card-bg dimensioneCard mt-3">
-    <div class="card-body">
-      <div>
-        <app-search-issues-form (onSearch)="searchIssue($event)"></app-search-issues-form>
-      </div>
-      <div *ngIf="loadingRicerca" class="mt-5 mb-4">
-        <p-progressBar mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
-      </div>
-      <div #tableIssues class="mt-5" *ngIf="dataTableIssues && !loadingRicerca">
-        <app-search-issues-table [dataTableIssues]="dataTableIssues"></app-search-issues-table>
+<ng-template [ngIf]="loadingData" [ngIfElse]="defaultrender">
+  <app-shared-ngx-spinner [spinnerSize]="'medium'"></app-shared-ngx-spinner>
+</ng-template>
+
+<ng-template #defaultrender>
+  <div class="card-wrapper card-space">
+    <div class="card card-bg dimensioneCard mt-3">
+      <div class="card-body">
+        <div>
+          <app-search-issues-form 
+            [allUser]="allUser"
+            [tipologicaTo]="tipologicaTo"
+            [tipologicaPriority]="tipologicaPriority"
+            (onSearch)="searchIssue($event)" 
+          ></app-search-issues-form>
+        </div>
+        <div *ngIf="loadingRicerca" class="mt-5 mb-4">
+          <p-progressBar mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
+        </div>
+        <div #tableIssues class="mt-5" *ngIf="dataTableIssues && !loadingRicerca">
+          <app-search-issues-table [dataTableIssues]="dataTableIssues"></app-search-issues-table>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</ng-template>

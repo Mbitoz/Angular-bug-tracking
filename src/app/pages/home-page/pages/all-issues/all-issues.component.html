@@ -3,10 +3,13 @@
 </ng-template>
 
 <ng-template #defaultrender>
-  <div class="container-check mb-4" *ngIf="loggedUser.role === 'USER'">
+  <div class="text-overview mb-3">
+    <span>Trascina e rilascia una Issue per aggiornarne lo stato in modo semplice e veloce.</span>
+  </div>
+  <div class="container-check mb-2" *ngIf="loggedUser.role === 'USER'">
     <div class="field-checkbox">
       <p-checkbox class="mb-1" [(ngModel)]="checked" [binary]="true" inputId="binary" (onChange)="filterIssue($event)"></p-checkbox>
-      <label for="binary" style="margin-left: 10px; cursor: pointer;">Only my issue</label>
+      <label for="binary" style="margin-left: 10px; cursor: pointer;">Only My Issue</label>
     </div>
   </div>
   

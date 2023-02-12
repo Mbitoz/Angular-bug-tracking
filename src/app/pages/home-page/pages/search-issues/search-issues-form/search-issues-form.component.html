@@ -1,8 +1,4 @@
-<ng-template [ngIf]="loadingData" [ngIfElse]="defaultrender">
-  <app-shared-ngx-spinner [spinnerSize]="'medium'"></app-shared-ngx-spinner>
-</ng-template>
 
-<ng-template #defaultrender>
   <form [formGroup]="formSearchIssue" (submit)="searchIssue()">
     <div class="row">
       <div class="col-3">
@@ -87,4 +83,3 @@
         iconPos="right"></button>
     </div>
   </form>
-</ng-template>
