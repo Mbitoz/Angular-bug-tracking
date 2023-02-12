@@ -11,26 +11,11 @@ export class TipologicheService {
   constructor(private http: HttpClient) { }
 
   getTipologiaOpenTo(): Observable<Array<Tipologica>> {
-    //Utilizzando JSON-server
-    //return this.http.get<Array<Tipologica>>('https://localhost:3000/tipologicaOpenTo');
-
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('cache-control', 'no-cache');
-    headers = headers.append('x-apikey', '147aafd40ac94c56545d2806b085dbe4f5c5d');
-    return this.http.get<Array<Tipologica>>('https://appbt-fe36.restdb.io/rest/tipologica-open-to', {
-      headers: headers
-    });
+    return this.http.get<Array<Tipologica>>('http://localhost:3000/tipologicaOpenTo');
   }
 
   getTipologiaPriority(): Observable<Array<Tipologica>> {
-    //Utilizzando JSON-server
-    //return this.http.get<Array<Tipologica>>('https://localhost:3000/tipologicaPriority');
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('cache-control', 'no-cache');
-    headers = headers.append('x-apikey', '147aafd40ac94c56545d2806b085dbe4f5c5d');
-    return this.http.get<Array<Tipologica>>('https://appbt-fe36.restdb.io/rest/tipologica-priority', {
-      headers: headers
-    });
+    return this.http.get<Array<Tipologica>>('http://localhost:3000/tipologicaPriority');
   }
 
 }

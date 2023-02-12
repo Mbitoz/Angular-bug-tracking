@@ -44,13 +44,13 @@ export class CreateIssueComponent implements OnInit {
     const $tipologicaPriority = this.tipologicaOpenTo.getTipologiaPriority();
     forkJoin([
       $allUser,
-      //$tipologicaOpenTo,
-      //$tipologicaPriority
+      $tipologicaOpenTo,
+      $tipologicaPriority
     ]).subscribe(
       result => {
         this.allUser = (result[0].filter( u => u.role != 'ADMIN'));
-        // this.tipologicaTo = (result[1]);
-        // this.tipologicaPriority = (result[2]);
+        this.tipologicaTo = (result[1]);
+        this.tipologicaPriority = (result[2]);
       },
       error => {
 
@@ -74,11 +74,11 @@ export class CreateIssueComponent implements OnInit {
   }
 
   async creaNuovaIssue(){
-    // const allIssue = await this.issuesService.getAllIssues().toPromise();
-    // let maxId = allIssue.length === 0 ? 0 : Math.max(...allIssue.map(element => element.id))
-    // newIssue.id = maxId + 1;
     this.persistanceLoading = true;
+    const allIssue = await this.issuesService.getAllIssues().toPromise();
+    let maxId = allIssue.length === 0 ? 0 : Math.max(...allIssue.map(element => element.id));
     const newIssue: Issues = this.formCreateIssue.value;
+    newIssue.id = maxId + 1;
     newIssue.state = 'TODO';
     newIssue.fkUserIdDecode = this.allUser.find(u => u.id === newIssue.fkUserId).username;
     this.issuesService.createIssue(newIssue).subscribe(

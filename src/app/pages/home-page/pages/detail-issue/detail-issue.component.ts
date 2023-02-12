@@ -36,10 +36,10 @@ export class DetailIssueComponent implements OnInit {
   loggedUser: Users;
   items: MenuItem[];
   stateOptions: Array<any> = [
-    {label: 'Todo', value: 'TODO'}, 
-    {label: 'In Progress', value: 'IN_PROGRESS'},
-    {label: 'Done', value: 'DONE'}, 
-    {label: 'Deliverable', value: 'DELIVERABLE'}
+    { label: 'Todo', value: 'TODO' },
+    { label: 'In Progress', value: 'IN_PROGRESS' },
+    { label: 'Done', value: 'DONE' },
+    { label: 'Deliverable', value: 'DELIVERABLE' }
   ];
   persistanceLoading: boolean = false;
 
@@ -57,7 +57,7 @@ export class DetailIssueComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.issueId = params.id ? parseInt(params.id) : 0;
     });
-    if(!this.issueId){
+    if (!this.issueId) {
       this.location.back();
     }
     this.loggedUser = JSON.parse(sessionStorage.getItem('user'));
@@ -68,32 +68,31 @@ export class DetailIssueComponent implements OnInit {
         escape: false,
       }
     ];
-   }
+  }
 
   ngOnInit() {
     const $allUser = this.dataLogin.getUsers();
     const $getIssue = this.issuesService.getIssueById(this.issueId);
-    //Utile per Tipologiche gestite persistenti sul DB
     const $tipologicaOpenTo = this.tipologicaOpenTo.getTipologiaOpenTo();
     const $tipologicaPriority = this.tipologicaOpenTo.getTipologiaPriority();
-    
+
     forkJoin([
       $allUser,
       $getIssue,
-      //$tipologicaOpenTo,
-      //$tipologicaPriority,
-      
+      $tipologicaOpenTo,
+      $tipologicaPriority,
+
     ]).subscribe(
       result => {
-        this.allUser = (result[0].filter( u => u.role != 'ADMIN'));
-        if(result[1] && result[1].length > 0){
+        this.allUser = (result[0].filter(u => u.role != 'ADMIN'));
+        if (result[1] && result[1].length > 0) {
           const issueArrayTemp = (result[1]);
           this.detailIssue = issueArrayTemp[0];
         } else {
           this.location.back();
         }
-        // this.tipologicaTo = (result[2]);
-        // this.tipologicaPriority = (result[3]);
+        this.tipologicaTo = (result[2]);
+        this.tipologicaPriority = (result[3]);
       },
       error => {
 
@@ -105,7 +104,7 @@ export class DetailIssueComponent implements OnInit {
     );
   }
 
-  initForm(){
+  initForm() {
     this.formDetailIssue = new FormGroup({
       title: new FormControl(this.detailIssue.title, Validators.required),
       openTo: new FormControl(this.detailIssue.openTo, Validators.required),
@@ -114,7 +113,7 @@ export class DetailIssueComponent implements OnInit {
       description: new FormControl(this.detailIssue.description, Validators.required),
       state: new FormControl(this.detailIssue.state, Validators.required),
     });
-    if(this.loggedUser.role != 'ADMIN'){
+    if (this.loggedUser.role != 'ADMIN') {
       this.formDetailIssue.disable();
     }
   }
@@ -136,25 +135,25 @@ export class DetailIssueComponent implements OnInit {
     });
   }
 
-  modifyIssue(){
+  modifyIssue() {
     this.persistanceLoading = true;
     const issue = this.formDetailIssue.value;
-    issue._id = this.detailIssue._id;
+    issue.id = this.detailIssue.id;
     issue.fkUserIdDecode = this.allUser.find(u => u.id === issue.fkUserId).username;
     this.issuesService.modifyIssue(this.formDetailIssue.value).subscribe(
       res => {
-        this.messageService.add({severity:'success', summary: 'Info', detail: 'Issue modificata con successo'});
+        this.messageService.add({ severity: 'success', summary: 'Info', detail: 'Issue modificata con successo' });
         this.persistanceLoading = false;
         this.location.back();
       }
     );
   }
 
-  redirectToDashboard(){
+  redirectToDashboard() {
     this.router.navigate(['/angular-project/dashboard']);
   }
 
-  goBack(){
+  goBack() {
     this.location.back();
   }
 

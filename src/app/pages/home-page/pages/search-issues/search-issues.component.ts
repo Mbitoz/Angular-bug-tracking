@@ -39,18 +39,17 @@ export class SearchIssuesComponent implements OnInit {
   ngOnInit() {
     this.loadingData = true;
     const $allUser = this.dataLogin.getUsers();
-    //Utile per Tipologiche gestite persistenti sul DB
     const $tipologicaOpenTo = this.tipologicaOpenTo.getTipologiaOpenTo();
     const $tipologicaPriority = this.tipologicaOpenTo.getTipologiaPriority();
     forkJoin([
       $allUser,
-      //$tipologicaOpenTo,
-      //$tipologicaPriority
+      $tipologicaOpenTo,
+      $tipologicaPriority
     ]).subscribe(
       result => {
         this.allUser = (result[0].filter( u => u.role != 'ADMIN'));
-        // this.tipologicaTo = (result[1]);
-        // this.tipologicaPriority = (result[2]);
+        this.tipologicaTo = (result[1]);
+        this.tipologicaPriority = (result[2]);
       },
       error => {
 
@@ -63,10 +62,10 @@ export class SearchIssuesComponent implements OnInit {
 
   searchIssue(requestBody){
     this.loadingRicerca = true;
-    this.issuesService.getAllIssues().subscribe(
+    this.issuesService.searchIssue(requestBody).subscribe(
       resp => {
         setTimeout(() => {
-          this.dataTableIssues = this.searchData(resp, requestBody);
+          this.dataTableIssues = resp;
           this.loadingRicerca = false;
           setTimeout(() => {
             this.tableIssues.nativeElement.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -75,13 +74,5 @@ export class SearchIssuesComponent implements OnInit {
       }
     );
   }
-
-  searchData(data, searchObj)  {
-    return data.filter(item => {
-      return Object.entries(searchObj).reduce((acc, [key, value]) => {
-        return acc && (value === null || item[key].toString().toLowerCase().includes(value.toString().toLowerCase()));
-      }, true);
-    });
-  };
 
 }

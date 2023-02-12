@@ -12,44 +12,18 @@ export class IssuesService {
   constructor(private http: HttpClient) { }
 
   getAllIssues(): Observable<Array<Issues>> {
-    //Utilizzando JSON-server
-    //return this.http.get<Array<Issues>>('https://localhost:3000/issues');
-
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('cache-control', 'no-cache');
-    headers = headers.append('x-apikey', '147aafd40ac94c56545d2806b085dbe4f5c5d');
-    return this.http.get<Array<Issues>>('https://appbt-fe36.restdb.io/rest/issues', {
-      headers: headers
-    });
+    return this.http.get<Array<Issues>>('http://localhost:3000/issues');
   }
 
   modifyIssue(issue: Issues): Observable<any> {
-    //Utilizzando JSON-server
-    //return this.http.put<Array<Issues>>(`https://localhost:3000/issues/${issue.id}`, issue);
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('cache-control', 'no-cache');
-    headers = headers.append('x-apikey', '147aafd40ac94c56545d2806b085dbe4f5c5d');
-    headers = headers.append('content-type', 'application/json');
-    return this.http.put(`https://appbt-fe36.restdb.io/rest/issues/${issue._id}`, issue, {
-      headers: headers
-    });
+    return this.http.put<Array<Issues>>(`http://localhost:3000/issues/${issue.id}`, issue);
   }
 
   createIssue(issue: Issues): Observable<any> {
-    //Utilizzando JSON-server
-    //return this.http.post<Array<Issues>>(`https://localhost:3000/issues`, issue);
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('cache-control', 'no-cache');
-    headers = headers.append('x-apikey', '147aafd40ac94c56545d2806b085dbe4f5c5d');
-    headers = headers.append('content-type', 'application/json');
-    return this.http.post(`https://appbt-fe36.restdb.io/rest/issues`, issue, {
-      headers: headers
-    });
+    return this.http.post<Array<Issues>>(`http://localhost:3000/issues`, issue);
   }
 
   searchIssue(issue: Issues): Observable<any> {
-    
-    //Utilizzando JSON-server
     const params = {
       title_like: issue.title,
       openTo: issue.openTo,
@@ -59,35 +33,20 @@ export class IssuesService {
       state: issue.state
     };
     const queryParameter = omitBy(params, isNil);
-    return this.http.get(`https://localhost:3000/issues`, {
+    return this.http.get(`http://localhost:3000/issues`, {
       params: queryParameter
     });
     
   }
 
   getIssueById(id: number): Observable<any> {
-    /*
-    Utilizzando JSON-server
     const params = {
       id: id
     };
     const queryParameter = omitBy(params, isNil);
-    const url = `https://localhost:3000/issues`;
+    const url = `http://localhost:3000/issues`;
     return this.http.get(url, {
       params: queryParameter
-    });
-    */
-
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('cache-control', 'no-cache');
-    headers = headers.append('x-apikey', '147aafd40ac94c56545d2806b085dbe4f5c5d');
-
-    const q = {
-      "_id": {id}
-    }
-    const url = `https://appbt-fe36.restdb.io/rest/issues?q={"numberIssue": ${id}}`;
-    return this.http.get(url, {
-      headers: headers
     });
   }
 

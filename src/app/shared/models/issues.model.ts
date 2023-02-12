@@ -1,5 +1,5 @@
 export interface Issues {
-    _id: number;
+    id: number;
     title: string;
     description: string;
     fkUserId: number;
@@ -7,7 +7,6 @@ export interface Issues {
     state: 'TODO' | 'IN_PROGRESS' | 'DONE' | 'DELIVERABLE';
     openTo: 'FE' | 'BE';
     priority: number;
-    numberIssue: number;
 }
 
 export interface Tipologica {
