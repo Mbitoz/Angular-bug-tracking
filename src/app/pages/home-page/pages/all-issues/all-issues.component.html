@@ -16,7 +16,7 @@
         <p-card pDraggable="issue" (onDragStart)="dragStart(issue)" (onDragEnd)="dragEnd()">
           <ng-template pTemplate="header">
             <div class="text-center labelId">
-              Issues n° {{ issue.id }}
+              Issues n° {{ issue.numberIssue }}
             </div>
             <p-divider></p-divider>
           </ng-template>
@@ -54,7 +54,7 @@
             <div class="text-center">
               <button pButton pRipple type="button" label="Dettaglio" style="height: 38px; width: 145px;color: #3E4E50;"
                 class="p-button-outlined p-button-rounded p-button-secondary" icon="pi pi-angle-right"
-                iconPos="right" (click)="goToDetail(issue.id)"></button>
+                iconPos="right" (click)="goToDetail(issue._id)"></button>
             </div>
           </ng-template>
         </p-card>
@@ -77,7 +77,7 @@
         <p-card pDraggable="issue" (onDragStart)="dragStart(issue)" (onDragEnd)="dragEnd()">
           <ng-template pTemplate="header">
             <div class="text-center labelId">
-              Issues n° {{ issue.id }}
+              Issues n° {{ issue.numberIssue }}
             </div>
             <p-divider></p-divider>
           </ng-template>
@@ -115,7 +115,7 @@
             <div class="text-center">
               <button pButton pRipple type="button" label="Dettaglio" style="height: 38px; width: 145px;color: #3E4E50;"
                 class="p-button-outlined p-button-rounded p-button-secondary" icon="pi pi-angle-right"
-                iconPos="right" (click)="goToDetail(issue.id)"></button>
+                iconPos="right" (click)="goToDetail(issue._id)"></button>
             </div>
           </ng-template>
         </p-card>
@@ -137,7 +137,7 @@
         <p-card pDraggable="issue" (onDragStart)="dragStart(issue)" (onDragEnd)="dragEnd()">
           <ng-template pTemplate="header">
             <div class="text-center labelId">
-              Issues n° {{ issue.id }}
+              Issues n° {{ issue.numberIssue }}
             </div>
             <p-divider></p-divider>
           </ng-template>
@@ -175,7 +175,7 @@
             <div class="text-center">
               <button pButton pRipple type="button" label="Dettaglio" style="height: 38px; width: 145px; color: #3E4E50;"
                 class="p-button-outlined p-button-rounded p-button-secondary" icon="pi pi-angle-right"
-                iconPos="right" (click)="goToDetail(issue.id)"></button>
+                iconPos="right" (click)="goToDetail(issue._id)"></button>
             </div>
           </ng-template>
         </p-card>
@@ -201,7 +201,7 @@
           [pDraggableDisabled]="loggedUser.role === 'USER' ? true : false">
           <ng-template pTemplate="header">
             <div class="text-center labelId">
-              Issues n° {{ issue.id }}
+              Issues n° {{ issue.numberIssue }}
             </div>
             <p-divider></p-divider>
           </ng-template>
@@ -239,7 +239,7 @@
             <div class="text-center">
               <button pButton pRipple type="button" label="Dettaglio" style="height: 38px; width: 145px; color: #3E4E50;"
                 class="p-button-outlined p-button-rounded p-button-secondary" icon="pi pi-angle-right"
-                iconPos="right" (click)="goToDetail(issue.id)"></button>
+                iconPos="right" (click)="goToDetail(issue._id)"></button>
             </div>
           </ng-template>
         </p-card>

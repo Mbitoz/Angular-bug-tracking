@@ -14,6 +14,7 @@ export class LoginPageComponent implements OnInit {
   formLogin: FormGroup;
   checkUser: boolean = false;
   invalidLogin: boolean = false;
+  loadingData: boolean = false;
 
   constructor(
     private dataLogin: DataLoginService,
@@ -51,6 +52,7 @@ export class LoginPageComponent implements OnInit {
 
   login(){
     this.invalidLogin = false;
+    this.loadingData = true;
     const username = this.formLogin.controls['username'].value;
     const password = this.formLogin.controls['password'].value;
     this.dataLogin.getUsers().subscribe(
@@ -58,9 +60,11 @@ export class LoginPageComponent implements OnInit {
         const userLogged: any = response.find( u => u.username.toUpperCase() === username.toUpperCase() && u.password === password);
         if(userLogged){
           sessionStorage.setItem('user',JSON.stringify(userLogged));
+          this.loadingData = false;
           this.router.navigate(['/angular-project/dashboard']);
         } else {
           this.invalidLogin = true;
+          this.loadingData = false;
         }
       }
     );

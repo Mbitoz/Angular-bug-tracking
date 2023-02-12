@@ -43,9 +43,9 @@ export class AllIssuesComponent implements OnInit {
     if (this.draggedIssue && this.draggedIssue.state != 'TODO') {
       this.draggedIssue.state = 'TODO';
       this.issuesToDo = [...this.issuesToDo, this.draggedIssue];
-      this.issuesInProgress = this.issuesInProgress.filter(i => i.id != this.draggedIssue.id);
-      this.issuesDone = this.issuesDone.filter(i => i.id != this.draggedIssue.id);
-      this.issuesDeliverable = this.issuesDeliverable.filter(i => i.id != this.draggedIssue.id);
+      this.issuesInProgress = this.issuesInProgress.filter(i => i._id != this.draggedIssue._id);
+      this.issuesDone = this.issuesDone.filter(i => i._id != this.draggedIssue._id);
+      this.issuesDeliverable = this.issuesDeliverable.filter(i => i._id != this.draggedIssue._id);
       await this.issuesService.modifyIssue(this.draggedIssue).toPromise();
       this.draggedIssue = null;
     }
@@ -55,9 +55,9 @@ export class AllIssuesComponent implements OnInit {
     if (this.draggedIssue && this.draggedIssue.state != 'IN_PROGRESS') {
       this.draggedIssue.state = 'IN_PROGRESS';
       this.issuesInProgress = [...this.issuesInProgress, this.draggedIssue];
-      this.issuesToDo = this.issuesToDo.filter(i => i.id != this.draggedIssue.id);
-      this.issuesDone = this.issuesDone.filter(i => i.id != this.draggedIssue.id);
-      this.issuesDeliverable = this.issuesDeliverable.filter(i => i.id != this.draggedIssue.id);
+      this.issuesToDo = this.issuesToDo.filter(i => i._id != this.draggedIssue._id);
+      this.issuesDone = this.issuesDone.filter(i => i._id != this.draggedIssue._id);
+      this.issuesDeliverable = this.issuesDeliverable.filter(i => i._id != this.draggedIssue._id);
       await this.issuesService.modifyIssue(this.draggedIssue).toPromise();
       this.draggedIssue = null;
     }
@@ -67,9 +67,9 @@ export class AllIssuesComponent implements OnInit {
     if (this.draggedIssue && this.draggedIssue.state != 'DONE') {
       this.draggedIssue.state = 'DONE';
       this.issuesDone = [...this.issuesDone, this.draggedIssue];
-      this.issuesToDo = this.issuesToDo.filter(i => i.id != this.draggedIssue.id);
-      this.issuesInProgress = this.issuesInProgress.filter(i => i.id != this.draggedIssue.id);
-      this.issuesDeliverable = this.issuesDeliverable.filter(i => i.id != this.draggedIssue.id);
+      this.issuesToDo = this.issuesToDo.filter(i => i._id != this.draggedIssue._id);
+      this.issuesInProgress = this.issuesInProgress.filter(i => i._id != this.draggedIssue._id);
+      this.issuesDeliverable = this.issuesDeliverable.filter(i => i._id != this.draggedIssue._id);
       await this.issuesService.modifyIssue(this.draggedIssue).toPromise();
       this.draggedIssue = null;
     }
@@ -79,9 +79,9 @@ export class AllIssuesComponent implements OnInit {
     if (this.draggedIssue && this.draggedIssue.state != 'DELIVERABLE') {
       this.draggedIssue.state = 'DELIVERABLE';
       this.issuesDeliverable = [...this.issuesDeliverable, this.draggedIssue];
-      this.issuesToDo = this.issuesToDo.filter(i => i.id != this.draggedIssue.id);
-      this.issuesInProgress = this.issuesInProgress.filter(i => i.id != this.draggedIssue.id);
-      this.issuesDone = this.issuesDone.filter(i => i.id != this.draggedIssue.id);
+      this.issuesToDo = this.issuesToDo.filter(i => i._id != this.draggedIssue._id);
+      this.issuesInProgress = this.issuesInProgress.filter(i => i._id != this.draggedIssue._id);
+      this.issuesDone = this.issuesDone.filter(i => i._id != this.draggedIssue._id);
       await this.issuesService.modifyIssue(this.draggedIssue).toPromise();
       this.draggedIssue = null;
     }

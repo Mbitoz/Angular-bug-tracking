@@ -17,7 +17,7 @@
           <button pButton pRipple type="button" icon="pi pi-angle-left" iconPos="left" label="Indietro" 
             class="p-button-raised p-button-warning" (click)="goBack()"
           ></button>
-          <span class="detail-header ">Dettaglio Issue n°<b>{{detailIssue.id}}</b></span>
+          <span class="detail-header ">Dettaglio Issue n°<b>{{detailIssue.numberIssue}}</b></span>
           <p-divider></p-divider>
         </div>
         <form [formGroup]="formDetailIssue" (submit)="modifyIssue()">

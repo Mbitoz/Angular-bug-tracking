@@ -127,11 +127,11 @@ export class DetailIssueComponent implements OnInit {
 
   modifyIssue(){
     const issue = this.formDetailIssue.value;
-    issue.id = this.detailIssue.id;
+    issue._id = this.detailIssue._id;
     issue.fkUserIdDecode = this.allUser.find(u => u.id === issue.fkUserId).username;
     this.issuesService.modifyIssue(this.formDetailIssue.value).subscribe(
       res => {
-        this.messageService.add({severity:'success', summary: 'Info', detail: 'Issue n°' + issue.id + ' modificata con successo'});
+        this.messageService.add({severity:'success', summary: 'Info', detail: 'Issue modificata con successo'});
         this.location.back();
       }
     );

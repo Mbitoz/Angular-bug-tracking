@@ -65,15 +65,15 @@ export class CreateIssueComponent implements OnInit {
   }
 
   async creaNuovaIssue(){
-    const allIssue = await this.issuesService.getAllIssues().toPromise();
-    let maxId = allIssue.length === 0 ? 0 : Math.max(...allIssue.map(element => element.id))
+    // const allIssue = await this.issuesService.getAllIssues().toPromise();
+    // let maxId = allIssue.length === 0 ? 0 : Math.max(...allIssue.map(element => element.id))
+    // newIssue.id = maxId + 1;
     const newIssue: Issues = this.formCreateIssue.value;
-    newIssue.id = maxId + 1;
     newIssue.state = 'TODO';
     newIssue.fkUserIdDecode = this.allUser.find(u => u.id === newIssue.fkUserId).username;
     this.issuesService.createIssue(newIssue).subscribe(
       res => {
-        this.messageService.add({severity:'success', summary: 'Info', detail: 'Issue n°' + newIssue.id + ' creata con successo'});
+        this.messageService.add({severity:'success', summary: 'Info', detail: 'Issue creata con successo'});
         this.formCreateIssue.reset();
       }
     );

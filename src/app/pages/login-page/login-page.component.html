@@ -41,8 +41,11 @@
               <p-message severity="warn" text="Username o password errati"></p-message>  
             </div>
             <div *ngIf="!checkUser" class="text-center mt-1">
-              <button [disabled]="formLogin.invalid" pButton pRipple type="button" label="Login" class="p-button-primary"
+              <button *ngIf="!loadingData" [disabled]="formLogin.invalid" pButton pRipple type="button" label="Login" class="p-button-primary"
                 (click)="login()"></button>
+
+                <p-button *ngIf="loadingData" icon="pi pi-spin pi-spinner" [disabled]="true"></p-button>
+
             </div>
           </div>
           
@@ -54,64 +57,6 @@
   <div class="col-12 md:col-5 overflow-hidden">
     <div class="md:ml-auto flex md:h-full image-box">
       <img src="assets/images/logo_standard.png" width="300px" height="300px" alt="Image" style="margin: auto;">
-
     </div>
   </div>
 </div>
-
-
-<!--
-<div class="section d-flex">
-  <div class="section-content">
-    <p-card [header]="!checkUser ? 'Effettua il Login' : ''" class="text-center" [style]="{width: '700px'}"
-      styleClass="p-card-shadow">
-      <ng-template pTemplate="header">
-        <p-avatar icon="pi pi-user" size="large" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"
-          shape="circle"></p-avatar>
-      </ng-template>
-
-      <div *ngIf="checkUser">
-        <div class="row mt-3 justify-content-center">
-          <div class="col-8">
-            <p-skeleton styleClass="mb-2" borderRadius="16px"></p-skeleton>
-            <p-skeleton width="10rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
-            <p-skeleton width="5rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
-            <p-skeleton height="2rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
-            <p-skeleton width="10rem" height="4rem" borderRadius="16px"></p-skeleton>
-          </div>
-        </div>
-      </div>
-
-      <div *ngIf="!checkUser" >
-        <form [formGroup]="formLogin" (keyup.enter)="login()">
-          <div class="row mt-3 justify-content-center">
-            <div class="col-8">
-              <span class="p-float-label">
-                <span id="title-form">Username</span>
-                <input type="text" pInputText formControlName="username">
-              </span>
-            </div>
-            <div class="col-8">
-              <span class="p-float-label">
-                <span id="title-form">Password</span>
-                <input type="password" pPassword [feedback]="false" formControlName="password" />
-              </span>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="row mt-3 animate__animated animate__headShake" *ngIf="invalidLogin">
-        <p-message severity="warn" text="Username o password errati"></p-message>  
-      </div>
-
-      <ng-template pTemplate="footer">
-        <div *ngIf="!checkUser">
-          <button [disabled]="formLogin.invalid" pButton pRipple type="button" label="Login" class="p-button-primary"
-            (click)="login()"></button>
-        </div>
-      </ng-template>
-
-    </p-card>
-  </div>
-</div>
--->
