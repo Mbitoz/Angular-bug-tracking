@@ -18,6 +18,12 @@ export class SearchIssuesFormComponent implements OnInit {
   formSearchIssue: FormGroup;
 
   loadingData: boolean = true;
+  stateOptions: Array<any> = [
+    { label: 'Todo', value: 'TODO' },
+    { label: 'In Progress', value: 'IN_PROGRESS' },
+    { label: 'Done', value: 'DONE' },
+    { label: 'Deliverable', value: 'DELIVERABLE' }
+  ];
 
   constructor() { }
 
@@ -32,7 +38,8 @@ export class SearchIssuesFormComponent implements OnInit {
       openTo: new FormControl(null),
       fkUserId: new FormControl(null),
       priority: new FormControl(null),
-      description: new FormControl(null)
+      description: new FormControl(null),
+      state: new FormControl(null)
     });
   }
 

@@ -1,6 +1,16 @@
 
   <form [formGroup]="formSearchIssue" (submit)="searchIssue()">
     <div class="row">
+      <div class="col-12 text-center">
+        <span id="title-form">Stato</span>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-12 text-center">
+        <p-selectButton [options]="stateOptions" formControlName="state" optionLabel="label" optionValue="value"></p-selectButton>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-3">
         <span id="title-form">Titolo</span>
       </div>
