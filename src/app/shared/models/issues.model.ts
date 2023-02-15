@@ -11,6 +11,6 @@ export interface Issues {
 }
 
 export interface Tipologica {
-    value: string;
+    value: string | number;
     description: string;
 }

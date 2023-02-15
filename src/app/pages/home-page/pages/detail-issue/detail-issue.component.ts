@@ -26,9 +26,9 @@ export class DetailIssueComponent implements OnInit {
     { value: 'BE', description: 'BackEnd' },
   ];
   tipologicaPriority: Array<Tipologica> = [
-    { value: '-1', description: 'Bassa' },
-    { value: '0', description: 'Media' },
-    { value: '1', description: 'Alta' },
+    { value: -1, description: 'Bassa' },
+    { value: 0, description: 'Media' },
+    { value: 1, description: 'Alta' },
   ];
   detailIssue: Issues;
   loadingData: boolean = true;
