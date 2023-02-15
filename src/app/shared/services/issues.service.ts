@@ -17,7 +17,7 @@ export class IssuesService {
 
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('cache-control', 'no-cache');
-    headers = headers.append('x-apikey', '147aafd40ac94c56545d2806b085dbe4f5c5d');
+    headers = headers.append('x-apikey', '63ec9e1a478852088da682c0');
     return this.http.get<Array<Issues>>('https://appbt-fe36.restdb.io/rest/issues', {
       headers: headers
     });
@@ -28,7 +28,7 @@ export class IssuesService {
     //return this.http.put<Array<Issues>>(`https://localhost:3000/issues/${issue.id}`, issue);
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('cache-control', 'no-cache');
-    headers = headers.append('x-apikey', '147aafd40ac94c56545d2806b085dbe4f5c5d');
+    headers = headers.append('x-apikey', '63ec9e1a478852088da682c0');
     headers = headers.append('content-type', 'application/json');
     return this.http.put(`https://appbt-fe36.restdb.io/rest/issues/${issue._id}`, issue, {
       headers: headers
@@ -40,7 +40,7 @@ export class IssuesService {
     //return this.http.post<Array<Issues>>(`https://localhost:3000/issues`, issue);
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('cache-control', 'no-cache');
-    headers = headers.append('x-apikey', '147aafd40ac94c56545d2806b085dbe4f5c5d');
+    headers = headers.append('x-apikey', '63ec9e1a478852088da682c0');
     headers = headers.append('content-type', 'application/json');
     return this.http.post(`https://appbt-fe36.restdb.io/rest/issues`, issue, {
       headers: headers
@@ -80,7 +80,7 @@ export class IssuesService {
 
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('cache-control', 'no-cache');
-    headers = headers.append('x-apikey', '147aafd40ac94c56545d2806b085dbe4f5c5d');
+    headers = headers.append('x-apikey', '63ec9e1a478852088da682c0');
 
     const q = {
       "_id": {id}

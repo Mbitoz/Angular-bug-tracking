@@ -16,7 +16,7 @@ export class TipologicheService {
 
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('cache-control', 'no-cache');
-    headers = headers.append('x-apikey', '147aafd40ac94c56545d2806b085dbe4f5c5d');
+    headers = headers.append('x-apikey', '63ec9e1a478852088da682c0');
     return this.http.get<Array<Tipologica>>('https://appbt-fe36.restdb.io/rest/tipologica-open-to', {
       headers: headers
     });
@@ -27,7 +27,7 @@ export class TipologicheService {
     //return this.http.get<Array<Tipologica>>('https://localhost:3000/tipologicaPriority');
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('cache-control', 'no-cache');
-    headers = headers.append('x-apikey', '147aafd40ac94c56545d2806b085dbe4f5c5d');
+    headers = headers.append('x-apikey', '63ec9e1a478852088da682c0');
     return this.http.get<Array<Tipologica>>('https://appbt-fe36.restdb.io/rest/tipologica-priority', {
       headers: headers
     });
