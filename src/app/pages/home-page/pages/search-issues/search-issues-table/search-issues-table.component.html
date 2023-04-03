@@ -1,4 +1,4 @@
-<p-table dataKey="id" styleClass="p-datatable-gridlines" [paginator]="true" [rows]="5"
+<p-table dataKey="numberIssue" styleClass="p-datatable-gridlines" [paginator]="true" [rows]="5"
   [rowsPerPageOptions]="[5,10,25,50]" [totalRecords]="dataTableIssues.length" [value]="dataTableIssues"
   [responsive]="true" sortField="id" [sortOrder]="-1" rowExpandMode="single">
   <ng-template pTemplate="emptymessage">
@@ -17,8 +17,8 @@
     <tr>
       <th style="width: 5%">
       </th>
-      <th class="text-center" pSortableColumn="id">
-        N° Issue <p-sortIcon field="id"></p-sortIcon>
+      <th class="text-center" pSortableColumn="numberIssue">
+        N° Issue <p-sortIcon field="numberIssue"></p-sortIcon>
       </th>
       <th class="text-center" pSortableColumn="title">
         Titolo <p-sortIcon field="title"></p-sortIcon>
